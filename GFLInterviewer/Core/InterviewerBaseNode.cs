@@ -26,7 +26,7 @@
         public abstract void DrawNode();
 
 
-        public void SetAllNodeAttr(string _speaker, string _content, float _fontsize)
+        public void SetAllNodeAttr(string _content, float _fontsize, string _speaker = "")
         {
             speakerName = _speaker;
             content = _content;

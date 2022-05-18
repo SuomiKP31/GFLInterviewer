@@ -26,8 +26,7 @@ namespace ImGuiNET
         private static Vector3 _clearColor = new Vector3(0.45f, 0.55f, 0.6f);
         private static uint s_tab_bar_flags = (uint)ImGuiTabBarFlags.Reorderable;
         
-        // Windows
-        static Dictionary<string, GfluiWindow> windowsToDraw = new Dictionary<string, GfluiWindow>();
+        
 
 
         static void SetThing(out float i, float val) { i = val; }
@@ -91,7 +90,7 @@ namespace ImGuiNET
         static void InitWindows()
         {
             ProjectCreator projectCreator = ProjectCreator.CreateInstance(true);
-            windowsToDraw.Add(projectCreator.GetName(), projectCreator);
+            InterviewerCore.WindowsToDraw.Add(projectCreator.GetName(), projectCreator);
         }
 
         static void InitCore()
@@ -99,8 +98,7 @@ namespace ImGuiNET
             InterviewerCore.Init();
         }
         #endregion
-
-
+        
 
         private static void SubmitUI()
         {
@@ -114,12 +112,12 @@ namespace ImGuiNET
                 ImGui.Text($"Application average {1000.0f / framerate:0.##} ms/frame ({framerate:0.#} FPS)");
 
                 
-                foreach (var windowKv in windowsToDraw)
+                foreach (var windowKv in InterviewerCore.WindowsToDraw)
                 {
                     GfluiWindow w;
                     if (ImGui.Button(windowKv.Key))
                     {
-                        if (windowsToDraw.TryGetValue(windowKv.Key, out w))
+                        if (InterviewerCore.WindowsToDraw.TryGetValue(windowKv.Key, out w))
                         {
                             w.Toggle();
                         }
@@ -128,10 +126,7 @@ namespace ImGuiNET
                 
             }
 
-            foreach (var windowKv in windowsToDraw)
-            {
-                windowKv.Value.DrawUI();
-            }
+            InterviewerCore.DrawAllWindow();
 
             // 2. Show another simple window. In most cases you will use an explicit Begin/End pair to name your windows.
             /*if (true)

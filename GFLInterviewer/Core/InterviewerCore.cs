@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using GFLInterviewer.UI;
 using ImGuiNET;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -12,6 +14,11 @@ namespace GFLInterviewer.Core
     /// </summary>
     public static class InterviewerCore
     {
+        #region Json
+
+        
+
+        
         static JObject configJson;
 
         public static string fontPath;
@@ -58,5 +65,41 @@ namespace GFLInterviewer.Core
             outputPath = configJson.GetValue("outputPath").ToString();
             projectFilePath = configJson.GetValue("projectPath").ToString();
         }
+        
+        #endregion
+
+        #region UI
+
+        // Windows
+        public static Dictionary<string, GfluiWindow> WindowsToDraw = new Dictionary<string, GfluiWindow>(); // Singleton windows
+        public static List<GfluiWindow> RepeatableWindows = new();
+
+        public static void DrawAllWindow()
+        {
+            foreach (var windowKv in InterviewerCore.WindowsToDraw)
+            {
+                windowKv.Value.DrawUI();
+            }
+
+            foreach (var window in RepeatableWindows)
+            {
+                window.DrawUI();
+            }
+        }
+
+        public static void AddRepeatableWindow(GfluiWindow wd)
+        {
+            RepeatableWindows.Add(wd);
+        }
+
+        public static void RemoveRepeatableWindow(GfluiWindow wd)
+        {
+            if (RepeatableWindows.Contains(wd))
+            {
+                RepeatableWindows.Remove(wd);
+            }
+        }
+
+        #endregion
     }
 }

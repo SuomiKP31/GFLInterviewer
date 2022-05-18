@@ -21,19 +21,7 @@ namespace GFLInterviewer.UI
         #endregion
         protected override void DrawMenuBar()
         {
-            if (ImGui.BeginMenuBar())
-            {
-                if (ImGui.BeginMenu("File"))
-                {
-                    if (ImGui.MenuItem("Open..", "Ctrl+O"))
-                    {
-                        // Call core to open the project json file
-                    }
-                    if (ImGui.MenuItem("Close", "Ctrl+W"))  { _isActive = false; }
-                    ImGui.EndMenu();
-                }
-                ImGui.EndMenuBar();
-            }
+
         }
 
         protected override void DrawBody()
@@ -42,7 +30,7 @@ namespace GFLInterviewer.UI
             ImGui.InputTextWithHint("项目名称", "填入想创建的文件名", ref m_projectName, 16);
             if (ImGui.Button("创建项目"))
             {
-                OpenProjectFile();
+                CreateProjectFile(m_projectName);
             }
         }
 
@@ -51,9 +39,12 @@ namespace GFLInterviewer.UI
             
         }
 
-        void CreateProjectFile()
+        void CreateProjectFile(string name)
         {
-            
+            var editor = InterviewerEditor.CreateInstance(name);
+            InterviewerCore.AddRepeatableWindow(editor);
+            editor.SetActive(true);
         }
+        
     }
 }

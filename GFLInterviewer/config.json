@@ -1,7 +1,11 @@
 {
-"fontPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Fonts/simhei.ttf",
-"resourcePath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/ImageBases",
-"avatarPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Avatar",
-"outputPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Output",
-"projectPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Project"
+  "fontPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Fonts/simhei.ttf",
+  "resourcePath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/ImageBases",
+  "avatarPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Avatar",
+  "outputPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Output",
+  "projectPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Project",
+  "dialogBubbleConfig" : {
+    "width" : 480,
+    "height": 240
+  }
 }

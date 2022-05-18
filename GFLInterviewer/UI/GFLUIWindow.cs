@@ -34,11 +34,22 @@ namespace GFLInterviewer.UI
             return _name;
         }
 
-        public void Toggle()
+        public virtual void Toggle()
         {
+            if (_isActive)
+            {
+                OnClose();
+            }
+            
             SetActive(!_isActive);
         }
-        
-        
+
+        /// <summary>
+        /// Callback when the window is closed
+        /// </summary>
+        public virtual void OnClose()
+        {
+            
+        }
     }
 }
