@@ -16,9 +16,6 @@ namespace GFLInterviewer.Core
     {
         #region Json
 
-        
-
-        
         static JObject configJson;
 
         public static string fontPath;
@@ -98,6 +95,43 @@ namespace GFLInterviewer.Core
             {
                 RepeatableWindows.Remove(wd);
             }
+        }
+
+        #endregion
+
+        #region Resources
+        
+        // Project Files
+        public static List<string> FetchProjectNameList()
+        {
+            string[] files = Directory.GetFiles(projectFilePath, "*.json");
+
+
+            return GFLIUtils.GetSelectionListFromFullPath(files);
+        }
+
+        // Common Image Resources
+        public static void LoadCommonResources()
+        {
+            string[] files = Directory.GetFiles(resourcePath, "*.png");
+        }
+        
+        // Avatars
+        
+        /// <summary>
+        /// Load all avatars from avatar path
+        /// </summary>
+        public static void LoadAvatars()
+        {
+            // TODO
+        }
+        
+        public static List<string> GetAvatarNames()
+        {
+            string[] files = Directory.GetFiles(avatarPath, "*.png");
+            List<string> avatarNames = new List<string>();
+
+            return avatarNames;
         }
 
         #endregion

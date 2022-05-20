@@ -1,16 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace GFLInterviewer.Core
 {
     public static class GFLIUtils
     {
-        public static string GetUTFString(string uniString)
+        public static string GetFileNameFromFullPath(string fullPath)
         {
-            byte[] bytes = Encoding.Default.GetBytes(uniString);
-            uniString = Encoding.UTF8.GetString(bytes);
+            var fileName = fullPath.Split("\\")[1];
+            return fileName;
+        }
 
-            return uniString;
+        public static List<string> GetSelectionListFromFullPath(string[] fullPathArray)
+        {
+            List<string> newList = new List<string>();
+            foreach (var path in fullPathArray)
+            {
+                newList.Add(GetFileNameFromFullPath(path));
+            }
+
+            return newList;
         }
     }
 }

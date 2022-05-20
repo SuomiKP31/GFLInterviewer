@@ -75,8 +75,7 @@ namespace GFLInterviewer.UI
 
         void WriteMetaData()
         {
-            _project.author = _author;
-            _project.projectName = _titleName;
+            _project.SetMetaData(_author, _titleName);
         }
 
         void SaveFile()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using GFLInterviewer.Core;
 
 namespace GFLInterviewer.UI
@@ -11,17 +12,34 @@ namespace GFLInterviewer.UI
             var inst = new ProjectCreator();
             inst._isActive = activeOnStart;
             inst._name = name;
+            inst.RefreshProjectFiles();
             return inst;
         }
 
         #region Attributes
 
         string m_projectName = String.Empty;
+        
+        string m_chosenProjectName = String.Empty;
+        
+        List<string> m_projectNameList = new List<string>();
 
         #endregion
         protected override void DrawMenuBar()
         {
-
+            if (ImGui.BeginMenuBar())
+            {
+                if (ImGui.BeginMenu("文件"))
+                {
+                    if (ImGui.MenuItem("刷新", "Ctrl+O"))
+                    {
+                        RefreshProjectFiles();
+                    }
+                    
+                    ImGui.EndMenu();
+                }
+                ImGui.EndMenuBar();
+            }
         }
 
         protected override void DrawBody()
@@ -32,11 +50,44 @@ namespace GFLInterviewer.UI
             {
                 CreateProjectFile(m_projectName);
             }
+            ImGui.Separator();
+            if (ImGui.BeginCombo("选择现有项目打开",m_chosenProjectName))
+            {
+                foreach (var proj in m_projectNameList)
+                {
+                    bool isSelected = m_chosenProjectName == proj;
+                    if (ImGui.Selectable(proj, isSelected))
+                    {
+                        m_chosenProjectName = proj;
+                    }
+
+                    if (isSelected)
+                    {
+                        ImGui.SetItemDefaultFocus();
+                    }
+                }
+                ImGui.EndCombo();
+            }
+
+            if (ImGui.Button("打开已有项目"))
+            {
+                OpenProjectFile();
+            }
         }
 
         void OpenProjectFile()
         {
+            if (m_chosenProjectName == String.Empty)
+            {
+                return;
+            }
+
+            var projFile = InterviewerProjectFile.CreateInstance(m_chosenProjectName);
+            var editor = InterviewerEditor.CreateInstance(projFile);
+            InterviewerCore.AddRepeatableWindow(editor);
+            editor.SetActive(true);
             
+            RefreshProjectFiles();
         }
 
         void CreateProjectFile(string name)
@@ -44,7 +95,13 @@ namespace GFLInterviewer.UI
             var editor = InterviewerEditor.CreateInstance(name);
             InterviewerCore.AddRepeatableWindow(editor);
             editor.SetActive(true);
+            
+            RefreshProjectFiles();
         }
-        
+
+        void RefreshProjectFiles()
+        {
+            m_projectNameList = InterviewerCore.FetchProjectNameList();
+        }
     }
 }
