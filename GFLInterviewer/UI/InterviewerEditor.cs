@@ -115,6 +115,7 @@ namespace GFLInterviewer.UI
             if (_currentNode != null)
             {
                 ImGui.Separator();
+                ImGui.Text($"Node No.{_curNodeIndex}");
                 _currentNode.DrawNode();
                 if (ImGui.Button("上一个节点"))
                 {
@@ -124,6 +125,11 @@ namespace GFLInterviewer.UI
                 if (ImGui.Button("下一个节点"))
                 {
                     NextNode();
+                }
+                ImGui.SameLine();
+                if (ImGui.Button("删除此节点"))
+                {
+                    RemoveCurNode();
                 }
             }
 
@@ -156,6 +162,12 @@ namespace GFLInterviewer.UI
         public void NextNode()
         {
             SelectNode(_curNodeIndex + 1);
+        }
+
+        public void RemoveCurNode()
+        {
+            _project.RemoveNode(_curNodeIndex);
+            PrevNode();
         }
 
         #region Project File Operation

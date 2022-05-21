@@ -118,6 +118,11 @@ namespace GFLInterviewer.Core
 
         public InterviewerBaseNode GetNode(int index)
         {
+            if (nodeList.Count == 0)
+            {
+                return null;
+            }
+            
             InterviewerBaseNode node;
             if (index < 0)
             {
@@ -134,6 +139,11 @@ namespace GFLInterviewer.Core
             }
 
             return node;
+        }
+
+        public void RemoveNode(int index)
+        {
+            nodeList.Remove(nodeList[index]);
         }
         #endregion
         

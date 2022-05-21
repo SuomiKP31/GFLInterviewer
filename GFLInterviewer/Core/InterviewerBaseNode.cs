@@ -38,7 +38,7 @@ namespace GFLInterviewer.Core
         /// Generate a Json Object containing the node's content
         /// </summary>
         /// <returns></returns>
-        public JObject GenerateJObject()
+        public virtual JObject GenerateJObject()
         {
             return null;
         }

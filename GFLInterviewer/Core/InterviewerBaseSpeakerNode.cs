@@ -6,13 +6,14 @@ namespace GFLInterviewer.Core
 {
     public class InterviewerBaseSpeakerNode : InterviewerBaseNode
     {
+        string avatarName;
 
         public static InterviewerBaseSpeakerNode CreateInstance(InterviewerProjectFile owner, NodeConf conf)
         {
             var node =  new InterviewerBaseSpeakerNode();
             node.owner = owner;
             node.conf = conf;
-
+            node.avatarName = "";
             node.confObject = InterviewerCore.GetConfigObject(conf);
             return node;
         }
@@ -44,6 +45,26 @@ namespace GFLInterviewer.Core
                 }
                 ImGui.EndCombo();
             }
+            
+            if (ImGui.BeginCombo("头像", avatarName))
+            {
+                foreach (var avatar in InterviewerCore.avatarNames)
+                {
+                    bool isSelected = avatarName == avatar;
+                    if (ImGui.Selectable(avatar, isSelected))
+                    {
+                        avatarName = avatar;
+                    }
+
+                    if (isSelected)
+                    {
+                        ImGui.SetItemDefaultFocus();
+                    }
+                }
+                ImGui.EndCombo();
+            }
+            // ImGui.SameLine();
+            
 
             ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(325,125));
         }

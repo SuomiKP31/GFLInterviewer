@@ -6,6 +6,7 @@ using System.IO;
 using Veldrid;
 using System.Runtime.CompilerServices;
 using GFLInterviewer.Core;
+using Veldrid.ImageSharp;
 
 namespace ImGuiNET
 {
@@ -155,6 +156,17 @@ namespace ImGuiNET
             }
 
             return rsi.ImGuiBinding;
+        }
+
+        public IntPtr GenTextureBindingFromFile(string fullPath)
+        {
+            var img = new ImageSharpTexture(fullPath);
+            var dimg = img.CreateDeviceTexture(_gd, _gd.ResourceFactory);
+
+            var viewDesc = new TextureViewDescription(dimg, PixelFormat.R8_G8_B8_A8_UNorm); //Pixel Format needed may change, I found UNorm looks closer to the image src then UnormSRGB does 
+            var textureView = _gd.ResourceFactory.CreateTextureView(viewDesc); 
+
+            return GetOrCreateImGuiBinding(_gd.ResourceFactory, textureView); //This returns the intPtr need for Imgui.Image()
         }
 
         private IntPtr GetNextImGuiBindingID()

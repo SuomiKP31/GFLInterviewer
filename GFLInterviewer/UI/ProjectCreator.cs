@@ -102,6 +102,7 @@ namespace GFLInterviewer.UI
         void RefreshProjectFiles()
         {
             m_projectNameList = InterviewerCore.FetchProjectNameList();
+            InterviewerCore.RefreshAvatars();
         }
     }
 }

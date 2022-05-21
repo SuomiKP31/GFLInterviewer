@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Drawing;
 using GFLInterviewer.UI;
 using ImGuiNET;
 using Newtonsoft.Json;
@@ -24,16 +26,23 @@ namespace GFLInterviewer.Core
         public static string avatarPath;
         public static string outputPath;
         public static string projectFilePath;
-        
 
+        // Avatars stored in avatar path. They are used in preview and rendering
+        public static List<string> avatarNames = new List<string>();
+        static Dictionary<string, Image> avatarImages = new Dictionary<string, Image>();
+        static Dictionary<string, Image> resourceImages = new Dictionary<string, Image>();
+            
         public static void Init()
         {
             ReadConfig();
             
             HandleFont();
             SetPaths();
+            
+            LoadCommonResources();
+            RefreshAvatars();
         }
-
+        
         public static void ReadConfig()
         {
             StreamReader file = new StreamReader("C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/config.json", Encoding.Default);
@@ -62,6 +71,8 @@ namespace GFLInterviewer.Core
             avatarPath = configJson.GetValue("avatarPath").ToString();
             outputPath = configJson.GetValue("outputPath").ToString();
             projectFilePath = configJson.GetValue("projectPath").ToString();
+
+            
         }
         
         #endregion
@@ -115,6 +126,15 @@ namespace GFLInterviewer.Core
         public static void LoadCommonResources()
         {
             string[] files = Directory.GetFiles(resourcePath, "*.png");
+            List<string> resourceNames = GFLIUtils.GetSelectionListFromFullPath(files);
+            var newDict = new Dictionary<string, Image>();
+            foreach (var res in resourceNames)
+            {
+                string path = $"{resourcePath}\\{res}";
+                newDict.Add(res, Image.FromFile(path));
+            }
+
+            resourceImages = newDict;
         }
         
         // Avatars
@@ -124,15 +144,29 @@ namespace GFLInterviewer.Core
         /// </summary>
         public static void LoadAvatars()
         {
-            // TODO
+            var newDict = new Dictionary<string, Image>();
+            foreach (var avatar in avatarNames)
+            {
+                string path = $"{avatarPath}\\{avatar}";
+                newDict.Add(avatar, Image.FromFile(path));
+            }
+
+            avatarImages = newDict;
+            
         }
         
         public static List<string> GetAvatarNames()
         {
             string[] files = Directory.GetFiles(avatarPath, "*.png");
-            List<string> avatarNames = new List<string>();
+            List<string> avatarNames = new List<string>(GFLIUtils.GetSelectionListFromFullPath(files));
 
             return avatarNames;
+        }
+
+        public static void RefreshAvatars()
+        {
+            avatarNames = GetAvatarNames();
+            LoadAvatars();
         }
 
         public static JObject GetConfigObject(NodeConf conf)
