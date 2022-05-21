@@ -15,9 +15,7 @@ namespace GFLInterviewer.Core
     {
         #region Json
 
-        JObject interviewerJsonObject;
-        List<InterviewerBaseNode> nodeList;
-        public string fileName;
+
         
         public void SetJsonObject(JObject obj)
         {
@@ -32,15 +30,18 @@ namespace GFLInterviewer.Core
             JArray speakerArray = interviewerJsonObject.GetValue("speakers") as JArray;
             SetSpeakerData(speakerArray.ToObject<List<string>>());
             
-            // TODO: Read and create nodes from Json
+            
             nodeList = new List<InterviewerBaseNode>();
+            JArray nodeJsonArray = interviewerJsonObject.GetValue("nodes") as JArray;
+            SetNodesData(nodeJsonArray);
+            
         }
         
         public void SaveInstanceToFile()
         {
-            string jsonPath = $"{InterviewerCore.projectFilePath}/{fileName}.json";
+            string jsonPath = $"{InterviewerCore.projectFilePath}/{fileName}";
             WriteHeader();
-            
+            WriteNodes();
             File.WriteAllText(jsonPath, interviewerJsonObject.ToString(), Encoding.UTF8);
         }
 
@@ -53,6 +54,17 @@ namespace GFLInterviewer.Core
         public void SetSpeakerData(List<string> speakers)
         {
             speakerNames = speakers;
+        }
+
+        public void SetNodesData(JArray jObjList)
+        {
+            foreach (var nodeJson in jObjList)
+            {
+                var obj = (JObject) nodeJson;
+                var jsonNode = InterviewerBaseSpeakerNode.CreateInstanceFromJObject(obj, this);
+                nodeList.Add(jsonNode);
+            }
+            
         }
 
         public void AddSpeaker(string speaker)
@@ -71,21 +83,27 @@ namespace GFLInterviewer.Core
             meta.Add("projectName", projectName);
             meta.Add("author", author);
             meta.Add("date", DateTime.Now);
-            interviewerJsonObject.Add("meta", meta);
-            
+            interviewerJsonObject["meta"] = meta;
+
             // Speakers
             JArray speakers = new JArray();
             foreach (var speaker in speakerNames)
             {
                 speakers.Add(speaker);
             }
-            interviewerJsonObject.Add("speakers", speakers);
+
+            interviewerJsonObject["speakers"] = speakers;
         }
 
         void WriteNodes()
         {
-            JObject nodes = new JObject();
-            
+            JArray nodes = new JArray();
+            foreach (var node in nodeList)
+            {
+                nodes.Add(node.GenerateJObject());
+            }
+
+            interviewerJsonObject["nodes"] = nodes;
         }
         
         #endregion
@@ -96,7 +114,10 @@ namespace GFLInterviewer.Core
         public string projectName;
         public string author;
 
-        public List<string> speakerNames; 
+        public List<string> speakerNames;
+        JObject interviewerJsonObject;
+        List<InterviewerBaseNode> nodeList;
+        public string fileName;
         
         #endregion
 

@@ -7,7 +7,7 @@ namespace GFLInterviewer.UI
     {
         public static InterviewerEditor CreateInstance(string fileName)
         {
-            return new InterviewerEditor(fileName);
+            return new InterviewerEditor($"{fileName}.json");
         }
         
         public static InterviewerEditor CreateInstance(InterviewerProjectFile file)
@@ -23,6 +23,7 @@ namespace GFLInterviewer.UI
             _author = file.author;
             _speakerName = "";
             _name = "Editor";
+            SelectNode(0);
         }
 
         InterviewerEditor(string fileName)

@@ -18,6 +18,21 @@ namespace GFLInterviewer.Core
             return node;
         }
 
+        public static InterviewerBaseSpeakerNode CreateInstanceFromJObject(JObject nodeJson,
+            InterviewerProjectFile owner)
+        {
+            var node =  new InterviewerBaseSpeakerNode();
+            node.owner = owner;
+            node.conf = nodeJson.GetValue("nodeConf").ToObject<NodeConf>();
+            node.speakerName = nodeJson.GetValue("speaker").ToString();
+            node.avatarName = nodeJson.GetValue("avatar").ToString();
+            node.content = nodeJson.GetValue("content").ToString();
+            node.fontSize = nodeJson.GetValue("fontSize").ToObject<float>();
+
+            node.confObject = InterviewerCore.GetConfigObject(node.conf);
+            return node;
+        }
+
 
         public override void Render()
         {
@@ -46,6 +61,26 @@ namespace GFLInterviewer.Core
                 ImGui.EndCombo();
             }
             
+            DrawAvatarList();
+            // ImGui.SameLine();
+
+            ImGui.InputFloat("字号", ref fontSize);
+            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(325,125));
+        }
+
+        public override JObject GenerateJObject()
+        {
+            JObject ret = new JObject();
+            ret.Add("nodeConf", (int)conf);
+            ret.Add("speaker", speakerName);
+            ret.Add("avatar", avatarName);
+            ret.Add("content", content);
+            ret.Add("fontSize", fontSize);
+            return ret;
+        }
+
+        public override void DrawAvatarList()
+        {
             if (ImGui.BeginCombo("头像", avatarName))
             {
                 foreach (var avatar in InterviewerCore.avatarNames)
@@ -63,12 +98,6 @@ namespace GFLInterviewer.Core
                 }
                 ImGui.EndCombo();
             }
-            // ImGui.SameLine();
-            
-
-            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(325,125));
         }
-
-
     }
 }
