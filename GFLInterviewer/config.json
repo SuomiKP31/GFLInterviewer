@@ -4,21 +4,25 @@
   "avatarPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Avatar",
   "outputPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Output",
   "projectPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Project",
-  
-  "dialogBubbleConfigL" : {
-    "width" : 1375,
-    "height": 200,
-    "avatarPosX" : 25,
-    "avatarPosY" : 25,
-    "avatarWidth" : 150,
-    "avatarHeight" : 150
-  },
-  "dialogBubbleConfigR" : {
-    "width" : 1375,
-    "height": 200,
-    "avatarPosX" : 1200,
-    "avatarPosY" : 25,
-    "avatarWidth" : 150,
-    "avatarHeight" : 150
+  "nodeConfs": {
+    "DialogBubbleConfigL" : {
+      "width" : 1375,
+      "height": 200,
+      "avatarPosX" : 25,
+      "avatarPosY" : 25,
+      "avatarWidth" : 150,
+      "avatarHeight" : 150,
+      "displayName" : "对话节点-左"
+    },
+    "DialogBubbleConfigR" : {
+      "width" : 1375,
+      "height": 200,
+      "avatarPosX" : 1200,
+      "avatarPosY" : 25,
+      "avatarWidth" : 150,
+      "avatarHeight" : 150,
+      "displayName" : "对话节点-右"
+    }
   }
+  
 }

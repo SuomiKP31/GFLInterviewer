@@ -24,6 +24,7 @@ namespace GFLInterviewer.Core
         public static string avatarPath;
         public static string outputPath;
         public static string projectFilePath;
+        
 
         public static void Init()
         {
@@ -41,7 +42,7 @@ namespace GFLInterviewer.Core
             
             file.Close();
         }
-
+        
         public static void HandleFont()
         {
             fontPath = configJson.GetValue("fontPath").ToString();
@@ -134,6 +135,12 @@ namespace GFLInterviewer.Core
             return avatarNames;
         }
 
+        public static JObject GetConfigObject(NodeConf conf)
+        {
+            var nodeConfs = configJson.GetValue("nodeConfs") as JObject;
+            
+            return nodeConfs.GetValue(conf.ToString()) as JObject;
+        }
         #endregion
     }
 }

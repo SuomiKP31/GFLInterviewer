@@ -1,7 +1,11 @@
 ﻿{
   "meta": {
-    "projectName": "Test",
+    "projectName": "Test2",
     "author": "Suomi",
-    "date": "2022-05-18T22:08:41.4886688+08:00"
-  }
+    "date": "2022-05-21T12:07:55.6706272+08:00"
+  },
+  "speakers": [
+    "索米",
+    "指挥官"
+  ]
 }
