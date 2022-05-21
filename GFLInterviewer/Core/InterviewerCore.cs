@@ -32,6 +32,8 @@ namespace GFLInterviewer.Core
         static Dictionary<string, Image> avatarImages = new Dictionary<string, Image>();
         static Dictionary<string, Image> resourceImages = new Dictionary<string, Image>();
             
+        // Logs
+        public static Stack<string> logStacks = new Stack<string>();
         public static void Init()
         {
             ReadConfig();
@@ -109,6 +111,14 @@ namespace GFLInterviewer.Core
             }
         }
 
+        public static void LogInfo(string log)
+        {
+            if (logStacks.Count > 10)
+            {
+                logStacks.Pop();
+            }
+            logStacks.Push(log);
+        }
         #endregion
 
         #region Resources

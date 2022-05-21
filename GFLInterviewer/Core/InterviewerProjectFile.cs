@@ -166,6 +166,11 @@ namespace GFLInterviewer.Core
         {
             nodeList.Remove(nodeList[index]);
         }
+
+        public List<InterviewerBaseNode> GetNodeList()
+        {
+            return nodeList;
+        }
         #endregion
         
         /// <summary>
@@ -199,11 +204,6 @@ namespace GFLInterviewer.Core
             f.nodeList = new List<InterviewerBaseNode>();
             return f;
         }
-
-        #region Resources List
-
-        List<string> _avatarFileNames;
-
-        #endregion
+        
     }
 }

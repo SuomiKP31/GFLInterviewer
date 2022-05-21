@@ -12,16 +12,26 @@
       "avatarPosY" : 25,
       "avatarWidth" : 150,
       "avatarHeight" : 150,
-      "displayName" : "对话节点-左"
+      "speakerX" : 225,
+      "speakerY" : 25,
+      "speakerWidth" : 200,
+      "speakerHeight" : 50,
+      "displayName" : "对话节点-左",
+      "spacingY" : 20
     },
     "DialogBubbleConfigR" : {
       "width" : 1375,
       "height": 200,
       "avatarPosX" : 1200,
-      "avatarPosY" : 25,
+      "avatarPosY" : 45,
       "avatarWidth" : 150,
       "avatarHeight" : 150,
-      "displayName" : "对话节点-右"
+      "speakerX" : 950,
+      "speakerY" : 45,
+      "speakerWidth" : 200,
+      "speakerHeight" : 50,
+      "displayName" : "对话节点-右",
+      "spacingY" : 20
     }
   }
   

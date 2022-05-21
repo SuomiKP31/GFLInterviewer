@@ -1,5 +1,6 @@
 ﻿using ImGuiNET;
 using System;
+using System.Numerics;
 using Newtonsoft.Json.Linq;
 
 namespace GFLInterviewer.Core
@@ -17,9 +18,10 @@ namespace GFLInterviewer.Core
         public float fontSize = 15.0f;
         protected InterviewerProjectFile owner;
 
-        public NodeConf conf; // Config name of the node
+        protected NodeConf conf; // Config name of the node
 
-        protected JObject confObject;
+        public JObject confObject;
+        
 
         /// <summary>
         /// Call Graphic api to draw on a bitmap png file

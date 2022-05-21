@@ -111,7 +111,7 @@ namespace ImGuiNET
                 float framerate = ImGui.GetIO().Framerate;
                 ImGui.Text($"Application average {1000.0f / framerate:0.##} ms/frame ({framerate:0.#} FPS)");
 
-                
+                // Singleton Window Toggles
                 foreach (var windowKv in InterviewerCore.WindowsToDraw)
                 {
                     GfluiWindow w;
@@ -124,6 +124,14 @@ namespace ImGuiNET
                     }
                 }
                 
+                // Debug Message Stack
+                ImGui.Separator();
+                ImGui.Text("Debug Info");
+                ImGui.Separator();
+                foreach (var log in InterviewerCore.logStacks)
+                {
+                    ImGui.Text(log);
+                }
             }
 
             InterviewerCore.DrawAllWindow();

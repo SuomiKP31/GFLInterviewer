@@ -132,6 +132,11 @@ namespace GFLInterviewer.UI
                 {
                     RemoveCurNode();
                 }
+
+                if (ImGui.Button("输出png"))
+                {
+                    OutputPngFile();
+                }
             }
 
             
@@ -184,6 +189,10 @@ namespace GFLInterviewer.UI
             _project.SaveInstanceToFile();
         }
 
+        void OutputPngFile()
+        {
+            InterviewerPainter.RenderPngFile(_project);
+        }
         #endregion
         
     }

@@ -36,7 +36,7 @@ namespace GFLInterviewer.Core
 
         public override void Render()
         {
-            throw new System.NotImplementedException();
+            // TODO
         }
 
         public override void DrawNode()
