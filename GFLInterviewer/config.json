@@ -23,7 +23,7 @@
       "contentRect" : {
         "PosX" : 200,
         "PosY" : 75,
-        "Width" : 750,
+        "Width" : 850,
         "Height" : 100
       },
       "displayName" : "对话节点-左",
@@ -42,20 +42,34 @@
       },
       "speakerRect": {
         "PosX" : 975,
-        "PosY" : 25,
+        "PosY" : 145,
         "Width" : 200,
         "Height" : 50
       },
       "contentRect" : {
-        "PosX" : 425,
-        "PosY" : 75,
-        "Width" : 750,
+        "PosX" : 325,
+        "PosY" : 45,
+        "Width" : 850,
         "Height" : 100
       },
       "displayName" : "对话节点-右",
       "frameFile" : "DialogFrameR.png",
       "spacingY" : 20,
       "speakerAlignmentRight" : 1
+    },
+    "NarratorConfig" : {
+      "width" : 1375,
+      "height": 200,
+
+      "contentRect" : {
+        "PosX" : 325,
+        "PosY" : 45,
+        "Width" : 850,
+        "Height" : 100
+      },
+      "displayName" : "对话节点-右",
+      "frameFile" : "DialogFrameR.png",
+      "spacingY" : 20
     }
   }
   

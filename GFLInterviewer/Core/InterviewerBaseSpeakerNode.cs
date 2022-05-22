@@ -71,7 +71,7 @@ namespace GFLInterviewer.Core
             
            // g.DrawRectangle(avatarFramePen, speakerRect); // debug
            InterviewerCore.SwitchFontSizeAndStyle(18.0f, FontStyle.Bold);
-           g.DrawString(speakerName, InterviewerCore.drawingFont, Brushes.White, speakerRect, GetStringFormatFromConfig(StrFormatType.Speaker));
+           g.DrawString(speakerName, InterviewerCore.drawingFont, Brushes.Orange, speakerRect, GetStringFormatFromConfig(StrFormatType.Speaker));
 
             // 3. Content Text
 
@@ -113,9 +113,13 @@ namespace GFLInterviewer.Core
 
             if (ImGui.InputFloat("字号", ref fontSize, 1.0f))
             {
-                fontSize = Math.Clamp(fontSize, 5.0f, 25.0f);
+                fontSize = Math.Clamp(fontSize, 5.0f, 35.0f);
             }
             ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(550,125));
+            if (ImGui.Button("切换方向"))
+            {
+                ChangeDirectionConf();
+            }
         }
 
         public override JObject GenerateJObject()
@@ -150,6 +154,12 @@ namespace GFLInterviewer.Core
             }
         }
 
+        /// <summary>
+        /// Generate StringFormat for text. Near/Far means align to the left/right.
+        /// </summary>
+        /// <param name="fmtType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected StringFormat GetStringFormatFromConfig(StrFormatType fmtType)
         {
             var fmt = new StringFormat();
@@ -175,6 +185,29 @@ namespace GFLInterviewer.Core
             }
 
             return fmt;
+        }
+
+        /// <summary>
+        /// Change Direction
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        protected void ChangeDirectionConf()
+        {
+            switch (conf)
+            {
+                case NodeConf.DialogBubbleConfigL:
+                    conf = NodeConf.DialogBubbleConfigR;
+                    break;
+                case NodeConf.DialogBubbleConfigR:
+                    conf = NodeConf.DialogBubbleConfigL;
+                    break;
+                case NodeConf.NarratorConfig:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            confObject = InterviewerCore.GetConfigObject(conf);
         }
     }
 }

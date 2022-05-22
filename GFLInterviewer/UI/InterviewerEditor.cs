@@ -100,6 +100,8 @@ namespace GFLInterviewer.UI
         protected override void DrawBody()
         {
             ImGui.Text($"文件：{_fileName}");
+            ImGui.SameLine();
+            ImGui.Text($"节点数： {_project.GetNodeList().Count}");
             ImGui.InputTextWithHint("题目", "项目题头", ref _titleName, 36);
             ImGui.InputTextWithHint("作者", "作者", ref _author, 36);
 
@@ -118,7 +120,7 @@ namespace GFLInterviewer.UI
             if (_currentNode != null)
             {
                 ImGui.Separator();
-                ImGui.Text($"Node No.{_curNodeIndex}");
+                ImGui.Text($"Node No.{_curNodeIndex+1}");
                 _currentNode.DrawNode();
                 if (ImGui.Button("上一个节点"))
                 {

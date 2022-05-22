@@ -9,7 +9,8 @@ namespace GFLInterviewer.Core
     public enum NodeConf
     {
         DialogBubbleConfigL,
-        DialogBubbleConfigR
+        DialogBubbleConfigR,
+        NarratorConfig
     }
 
     public enum StrFormatType
@@ -22,7 +23,7 @@ namespace GFLInterviewer.Core
 
         public string speakerName = "";
         public string content = "";
-        public float fontSize = 15.0f;
+        public float fontSize = 20.0f;
         protected InterviewerProjectFile owner;
 
         protected NodeConf conf; // Config name of the node
@@ -32,7 +33,6 @@ namespace GFLInterviewer.Core
 
         /// <summary>
         /// Call Graphic api to draw on a bitmap png file
-        /// TODO: parameters
         /// </summary>
         public abstract void Render(Graphics g, Rectangle rect);
         
