@@ -176,17 +176,12 @@ namespace GFLInterviewer.UI
             base.OnClose();
             _subWindow.SetActive(false);
         }
-
-        protected void UpdateNodeListWindow()
-        {
-            // TODO: A scroll view window that holds a brief view of all nodes
-        }
+        
 
         public void SelectNode(int index)
         {
             _curNodeIndex = index < 0 ? -1 : index;
             _currentNode = _project.GetNode(_curNodeIndex);
-            UpdateNodeListWindow();
             CriticalOpCounter();
             if (_curNodeIndex == -1)
             {

@@ -42,7 +42,7 @@ namespace GFLInterviewer.UI
                     if (ImGui.Selectable(bnode.GetPreviewText(), isSelected))
                     {
                         _curListSelectedNode = bnode;
-                        var dbg = bnode.GetPreviewText();
+                        // var dbg = bnode.GetPreviewText();
 
                         int idx = nodes.IndexOf(bnode);
                         owner.SelectNode(idx);
