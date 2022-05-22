@@ -67,8 +67,7 @@
         "Width" : 850,
         "Height" : 100
       },
-      "displayName" : "对话节点-右",
-      "frameFile" : "DialogFrameR.png",
+      "displayName" : "旁白节点",
       "spacingY" : 20
     }
   }

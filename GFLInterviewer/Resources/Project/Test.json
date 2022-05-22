@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "测试",
     "author": "Suomi",
-    "date": "2022-05-22T16:57:10.7991701+08:00"
+    "date": "2022-05-22T17:29:53.0186806+08:00"
   },
   "speakers": [
     "索米",
@@ -50,6 +50,20 @@
       "avatar": "SuomiMod3_d.png",
       "content": "换方向测试",
       "fontSize": 25.0
+    },
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "这是旁白Test",
+      "fontSize": 20.0,
+      "lineCount": 3
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "",
+      "avatar": "",
+      "content": "",
+      "fontSize": 20.0
     }
   ]
 }

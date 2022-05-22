@@ -91,6 +91,11 @@ namespace GFLInterviewer.UI
                     {
                         AddNode(NodeConf.DialogBubbleConfigR);
                     }
+
+                    if (ImGui.MenuItem("添加旁白节点"))
+                    {
+                        AddNode(NodeConf.NarratorConfig);
+                    }
                     ImGui.EndMenu();
                 }
                 ImGui.EndMenuBar();
@@ -153,10 +158,16 @@ namespace GFLInterviewer.UI
 
         public void SelectNode(int index)
         {
-            _curNodeIndex = index < 0 ? 0 : index;
+            _curNodeIndex = index < 0 ? -1 : index;
             _currentNode = _project.GetNode(_curNodeIndex);
             UpdateNodeListWindow();
             CriticalOpCounter();
+            if (_curNodeIndex == -1)
+            {
+                // For cycling back to the end of the list
+                // GetNode will return the last node if parameter < 0
+                _curNodeIndex = _project.GetNodeList().Count - 1;
+            }
         }
 
         public void AddNode(NodeConf conf)

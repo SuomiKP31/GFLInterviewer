@@ -61,7 +61,17 @@ namespace GFLInterviewer.Core
             foreach (var nodeJson in jObjList)
             {
                 var obj = (JObject) nodeJson;
-                var jsonNode = InterviewerBaseSpeakerNode.CreateInstanceFromJObject(obj, this);
+                NodeConf conf = obj.GetValue("nodeConf").ToObject<NodeConf>();
+                InterviewerBaseNode jsonNode;
+                if (conf != NodeConf.NarratorConfig)
+                {
+                    jsonNode = InterviewerBaseSpeakerNode.CreateInstanceFromJObject(obj, this);
+                }
+                else
+                {
+                    jsonNode = InterviewerNarratorNode.CreateInstanceFromJObject(obj, this);
+                }
+                
                 nodeList.Add(jsonNode);
             }
             
@@ -130,8 +140,19 @@ namespace GFLInterviewer.Core
         /// <returns>index</returns>
         public int CreateNode(NodeConf conf)
         {
-            var node = InterviewerBaseSpeakerNode.CreateInstance(this, conf);
-            int index = nodeList.Count;
+            InterviewerBaseNode node;
+            int index = 0;
+            if (conf != NodeConf.NarratorConfig)
+            {
+                node = InterviewerBaseSpeakerNode.CreateInstance(this, conf);
+                index = nodeList.Count;
+            }
+            else
+            {
+                node = InterviewerNarratorNode.CreateInstance(this, conf);
+                index = nodeList.Count;
+            }
+            
             nodeList.Add(node);
             
             return index;
@@ -147,7 +168,7 @@ namespace GFLInterviewer.Core
             InterviewerBaseNode node;
             if (index < 0)
             {
-                node = nodeList[0];
+                node = nodeList[^1];
             }
             else if (index > nodeList.Count - 1)
             {
