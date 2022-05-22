@@ -167,7 +167,6 @@ namespace GFLInterviewer.UI
                     OutputPngFile();
                 }
             }
-
             
         }
 

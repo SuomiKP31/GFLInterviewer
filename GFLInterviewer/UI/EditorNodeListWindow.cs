@@ -21,6 +21,18 @@ namespace GFLInterviewer.UI
             
         }
 
+        public override void DrawUI()
+        {
+            if (_isActive)
+            {
+                ImGui.Begin(_name, ref _isActive, ImGuiWindowFlags.NoTitleBar);
+                
+                DrawMenuBar();
+                DrawBody();
+                ImGui.End();
+            }
+        }
+
         protected override void DrawBody()
         {
             var nodes = owner.GetNodeList();

@@ -103,6 +103,7 @@ namespace GFLInterviewer.Core
         // Windows
         public static Dictionary<string, GfluiWindow> WindowsToDraw = new Dictionary<string, GfluiWindow>(); // Singleton windows
         public static List<GfluiWindow> RepeatableWindows = new();
+        public static List<GfluiWindow> _RWindowToAdd = new();
 
         public static void RemoveClosedWindow()
         {
@@ -115,6 +116,7 @@ namespace GFLInterviewer.Core
                     window.OnClose();
                 }
             }
+            
         }
 
         public static void DrawAllWindow()
@@ -134,6 +136,7 @@ namespace GFLInterviewer.Core
         {
             RepeatableWindows.Add(wd);
         }
+        
 
         public static void RemoveRepeatableWindow(GfluiWindow wd)
         {
