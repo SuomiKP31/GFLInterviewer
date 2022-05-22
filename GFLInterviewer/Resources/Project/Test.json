@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "测试",
     "author": "Suomi",
-    "date": "2022-05-22T18:26:23.6707494+08:00"
+    "date": "2022-05-22T19:01:17.7775325+08:00"
   },
   "speakers": [
     "索米",
@@ -64,6 +64,48 @@
       "avatar": "",
       "content": "旁白之后排版",
       "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_d.png",
+      "content": "插入节点测试",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "这是一个好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长的旁白",
+      "fontSize": 20.0,
+      "lineCount": 10
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "Test AutoCreation 1",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "",
+      "content": "Test",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "旁白1",
+      "fontSize": 20.0,
+      "lineCount": 1
+    },
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "自动创建旁白2",
+      "fontSize": 20.0,
+      "lineCount": 6
     }
   ]
 }

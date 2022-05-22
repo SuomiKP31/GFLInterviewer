@@ -170,9 +170,25 @@ namespace GFLInterviewer.Core
             {
                 node = nodeList[^1];
             }
+            // Create a new node for out of range selection
             else if (index > nodeList.Count - 1)
             {
-                int i = CreateNode(NodeConf.DialogBubbleConfigL);
+                NodeConf autoCreationConf; // What to create automatically next?
+                switch (nodeList[^1].conf)
+                {
+                    case NodeConf.DialogBubbleConfigL:
+                        autoCreationConf = NodeConf.DialogBubbleConfigR;
+                        break;
+                    case NodeConf.DialogBubbleConfigR:
+                        autoCreationConf = NodeConf.DialogBubbleConfigL;
+                        break;
+                    case NodeConf.NarratorConfig:
+                        autoCreationConf = NodeConf.NarratorConfig;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+                int i = CreateNode(autoCreationConf);
                 node = nodeList[i];
             }
             else
@@ -186,6 +202,13 @@ namespace GFLInterviewer.Core
         public void RemoveNode(int index)
         {
             nodeList.Remove(nodeList[index]);
+        }
+
+        public void MoveNode(InterviewerBaseNode node, int toIndex)
+        {
+            // int fromIndex = nodeList.FindIndex(baseNode => baseNode == node);
+            nodeList.Remove(node);
+            nodeList.Insert(toIndex, node);
         }
 
         public List<InterviewerBaseNode> GetNodeList()

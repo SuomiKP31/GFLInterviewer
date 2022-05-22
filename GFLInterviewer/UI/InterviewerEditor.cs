@@ -96,6 +96,16 @@ namespace GFLInterviewer.UI
                     {
                         AddNode(NodeConf.NarratorConfig);
                     }
+
+                    if (ImGui.MenuItem("在当前节点后插入对话节点"))
+                    {
+                        InsertNodeAfterCur(NodeConf.DialogBubbleConfigL);
+                    }
+                    
+                    if (ImGui.MenuItem("在当前节点后插入旁白节点"))
+                    {
+                        InsertNodeAfterCur(NodeConf.NarratorConfig);
+                    }
                     ImGui.EndMenu();
                 }
                 ImGui.EndMenuBar();
@@ -156,7 +166,7 @@ namespace GFLInterviewer.UI
             // TODO: A scroll view window that holds a brief view of all nodes
         }
 
-        public void SelectNode(int index)
+        protected void SelectNode(int index)
         {
             _curNodeIndex = index < 0 ? -1 : index;
             _currentNode = _project.GetNode(_curNodeIndex);
@@ -170,28 +180,41 @@ namespace GFLInterviewer.UI
             }
         }
 
-        public void AddNode(NodeConf conf)
+        protected void AddNode(NodeConf conf)
         {
             int index = _project.CreateNode(conf);
             CriticalOpCounter(3);
             SelectNode(index);
         }
 
-        public void PrevNode()
+        protected void PrevNode()
         {
             SelectNode(_curNodeIndex - 1);
         }
 
-        public void NextNode()
+        protected void NextNode()
         {
             SelectNode(_curNodeIndex + 1);
         }
 
-        public void RemoveCurNode()
+        protected void RemoveCurNode()
         {
             _project.RemoveNode(_curNodeIndex);
             PrevNode();
             CriticalOpCounter(3);
+        }
+
+        protected void MoveNode(InterviewerBaseNode targetNode, int toIndex)
+        {
+            _project.MoveNode(targetNode, toIndex);
+        }
+
+        protected void InsertNodeAfterCur(NodeConf conf)
+        {
+            int index = _project.CreateNode(conf);
+            CriticalOpCounter(3);
+            var node = _project.GetNode(index);
+            _project.MoveNode(node, _curNodeIndex + 1);
         }
 
         /// <summary>

@@ -8,14 +8,14 @@ namespace GFLInterviewer.Core
 {
     public class InterviewerNarratorNode : InterviewerBaseNode
     {
-        int _lineCount = 0;
+        int _lineCount = 1;
         public static InterviewerNarratorNode CreateInstance(InterviewerProjectFile owner, NodeConf conf)
         {
             var node =  new InterviewerNarratorNode();
             node.owner = owner;
             node.conf = conf;
             node.confObject = InterviewerCore.GetConfigObject(conf);
-            node._lineCount = 0;
+            node._lineCount = 1;
             return node;
         }
 
@@ -84,6 +84,12 @@ namespace GFLInterviewer.Core
         {
             int h = 3 * _lineCount + confObject["contentRect"]["Height"].ToObject<int>() * _lineCount;
             return h;
+        }
+
+        public override string GetPreviewText()
+        {
+            bool tooLong = content.Length > 11;
+            return $"旁白: {content.Substring(0, tooLong? 10 : content.Length)}...";
         }
     }
 }

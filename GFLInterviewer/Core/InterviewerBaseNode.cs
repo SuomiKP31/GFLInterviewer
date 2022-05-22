@@ -26,7 +26,7 @@ namespace GFLInterviewer.Core
         public float fontSize = 20.0f;
         protected InterviewerProjectFile owner;
 
-        protected NodeConf conf; // Config name of the node
+        public NodeConf conf; // Config name of the node
 
         public JObject confObject;
         
