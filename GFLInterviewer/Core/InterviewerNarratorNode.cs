@@ -88,8 +88,14 @@ namespace GFLInterviewer.Core
 
         public override string GetPreviewText()
         {
-            bool tooLong = content.Length > 11;
-            return $"旁白: {content.Substring(0, tooLong? 10 : content.Length)}...";
+            bool tooLong = content.Length > 25;
+            string contentString = content.Substring(0, tooLong ? 24 : content.Length)
+                .Replace("\n", " ");
+            if (tooLong)
+            {
+                contentString += "...";
+            }
+            return $"旁白: {contentString}";
         }
     }
 }

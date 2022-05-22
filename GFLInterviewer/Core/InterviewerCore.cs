@@ -104,6 +104,19 @@ namespace GFLInterviewer.Core
         public static Dictionary<string, GfluiWindow> WindowsToDraw = new Dictionary<string, GfluiWindow>(); // Singleton windows
         public static List<GfluiWindow> RepeatableWindows = new();
 
+        public static void RemoveClosedWindow()
+        {
+            List<GfluiWindow> tmpList = new List<GfluiWindow>(RepeatableWindows);
+            foreach (var window in tmpList)
+            {
+                if (!window.IsActive())
+                {
+                    RemoveRepeatableWindow(window);
+                    window.OnClose();
+                }
+            }
+        }
+
         public static void DrawAllWindow()
         {
             foreach (var windowKv in InterviewerCore.WindowsToDraw)

@@ -70,8 +70,35 @@ namespace GFLInterviewer.Core
 
         public virtual string GetPreviewText()
         {
-            bool tooLong = content.Length > 11;
-            return $"{speakerName}: {content.Substring(0, tooLong? 10 : content.Length)}...";
+            bool tooLong = content.Length > 25;
+            string contentString = content.Substring(0, tooLong ? 24 : content.Length);
+                
+            contentString = contentString.Replace("\n", " "); // Get rid of new lines
+            if (tooLong)
+            {
+                contentString += "...";
+            }
+            return $"{GetAcronymByConf()}|{speakerName}: {contentString}";
+        }
+
+        protected string GetAcronymByConf()
+        {
+            string ret = "";
+            switch (conf)
+            {
+                case NodeConf.DialogBubbleConfigL:
+                    ret = "左";
+                    break;
+                case NodeConf.DialogBubbleConfigR:
+                    ret = "右";
+                    break;
+                case NodeConf.NarratorConfig:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return ret;
         }
 
         protected Rectangle GetRectFromJObject(JObject rect)

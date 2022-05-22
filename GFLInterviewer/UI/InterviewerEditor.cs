@@ -1,4 +1,5 @@
-﻿using GFLInterviewer.Core;
+﻿using System.Collections.Generic;
+using GFLInterviewer.Core;
 using ImGuiNET;
 
 namespace GFLInterviewer.UI
@@ -24,6 +25,10 @@ namespace GFLInterviewer.UI
             _speakerName = "";
             _name = "Editor";
             SelectNode(0);
+
+            _subWindow = EditorNodeListWindow.CreateInstance(this);
+            _subWindow.SetActive(true);
+            InterviewerCore.AddRepeatableWindow(_subWindow);
         }
 
         InterviewerEditor(string fileName)
@@ -36,6 +41,10 @@ namespace GFLInterviewer.UI
             _author = "";
             _speakerName = "";
             _name = "Editor";
+            
+            _subWindow = EditorNodeListWindow.CreateInstance(this);
+            _subWindow.SetActive(true);
+            InterviewerCore.AddRepeatableWindow(_subWindow);
         }
         
         InterviewerProjectFile _project; // Core logic class
@@ -51,6 +60,7 @@ namespace GFLInterviewer.UI
         int _criticalOps = 0;
 
         InterviewerBaseNode _currentNode;
+        EditorNodeListWindow _subWindow;
         int _curNodeIndex = 0;
         #endregion
         
@@ -161,12 +171,18 @@ namespace GFLInterviewer.UI
             
         }
 
+        public override void OnClose()
+        {
+            base.OnClose();
+            _subWindow.SetActive(false);
+        }
+
         protected void UpdateNodeListWindow()
         {
             // TODO: A scroll view window that holds a brief view of all nodes
         }
 
-        protected void SelectNode(int index)
+        public void SelectNode(int index)
         {
             _curNodeIndex = index < 0 ? -1 : index;
             _currentNode = _project.GetNode(_curNodeIndex);
@@ -204,9 +220,9 @@ namespace GFLInterviewer.UI
             CriticalOpCounter(3);
         }
 
-        protected void MoveNode(InterviewerBaseNode targetNode, int toIndex)
+        public List<InterviewerBaseNode> GetNodeList()
         {
-            _project.MoveNode(targetNode, toIndex);
+            return _project.GetNodeList();
         }
 
         protected void InsertNodeAfterCur(NodeConf conf)

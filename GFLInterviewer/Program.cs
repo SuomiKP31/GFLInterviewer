@@ -133,7 +133,7 @@ namespace ImGuiNET
                     ImGui.Text(log);
                 }
             }
-
+            InterviewerCore.RemoveClosedWindow();
             InterviewerCore.DrawAllWindow();
 
             // 2. Show another simple window. In most cases you will use an explicit Begin/End pair to name your windows.

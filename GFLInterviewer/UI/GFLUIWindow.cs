@@ -1,4 +1,5 @@
-﻿using ImGuiNET;
+﻿using GFLInterviewer.Core;
+using ImGuiNET;
 
 namespace GFLInterviewer.UI
 {
@@ -15,6 +16,7 @@ namespace GFLInterviewer.UI
             if (_isActive)
             {
                 ImGui.Begin(_name, ref _isActive, ImGuiWindowFlags.MenuBar);
+                
                 DrawMenuBar();
                 DrawBody();
                 ImGui.End();
@@ -49,7 +51,12 @@ namespace GFLInterviewer.UI
         /// </summary>
         public virtual void OnClose()
         {
-            
+            InterviewerCore.LogInfo($"{_name} Repeatable Window is closed.");
+        }
+
+        public bool IsActive()
+        {
+            return _isActive;
         }
     }
 }
