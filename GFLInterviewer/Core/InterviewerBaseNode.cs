@@ -84,5 +84,7 @@ namespace GFLInterviewer.Core
             return new Rectangle(x, y, w, h);
 
         }
+
+        public abstract int GetHeight();
     }
 }

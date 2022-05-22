@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "测试",
     "author": "Suomi",
-    "date": "2022-05-22T17:29:53.0186806+08:00"
+    "date": "2022-05-22T18:26:23.6707494+08:00"
   },
   "speakers": [
     "索米",
@@ -54,15 +54,15 @@
     {
       "nodeConf": 2,
       "speaker": "",
-      "content": "这是旁白Test",
+      "content": "这是旁白Test\n第二行\n第三行",
       "fontSize": 20.0,
       "lineCount": 3
     },
     {
       "nodeConf": 0,
-      "speaker": "",
+      "speaker": "指挥官",
       "avatar": "",
-      "content": "",
+      "content": "旁白之后排版",
       "fontSize": 20.0
     }
   ]

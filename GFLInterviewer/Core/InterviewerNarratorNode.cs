@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Numerics;
 using ImGuiNET;
 using Newtonsoft.Json.Linq;
@@ -35,13 +36,33 @@ namespace GFLInterviewer.Core
         
         public override void Render(Graphics g, Rectangle rect)
         {
-            // TODO
+            
+            
+            InterviewerCore.SwitchFontSizeAndStyle(fontSize, FontStyle.Bold);
+            
+            StringFormat narratorTextFormat = new StringFormat();
+            narratorTextFormat.Alignment = StringAlignment.Center;
+            narratorTextFormat.LineAlignment = StringAlignment.Center;
+
+            var contentRect = GetRectFromJObject((JObject)confObject.GetValue("contentRect"));
+            
+            contentRect.Height *= _lineCount;
+            contentRect.X += rect.X;
+            contentRect.Y += rect.Y;
+
+            Brush narratorBgBrush = new SolidBrush(Color.FromArgb(31,31,31));
+            Pen framePen = new Pen(Color.Orange);
+            framePen.Width = 3;
+            g.FillRectangle(narratorBgBrush, contentRect);
+            g.DrawRectangle(framePen, contentRect);
+            
+            g.DrawString(content, InterviewerCore.drawingFont, Brushes.White, contentRect, narratorTextFormat);
         }
 
         public override void DrawNode()
         {
             ImGui.Text(confObject.GetValue("displayName").ToString());
-            ImGui.DragInt("行数", ref _lineCount, 0.2f, 1, 5);
+            ImGui.DragInt("行数（拖动）", ref _lineCount, 0.2f, 1, 15);
             // I decided to fix the fontsize to 20 in narrator nodes.
             // Typically you don't need to change that.
             
@@ -57,6 +78,12 @@ namespace GFLInterviewer.Core
             ret.Add("fontSize", fontSize);
             ret.Add("lineCount", _lineCount);
             return ret;
+        }
+
+        public override int GetHeight()
+        {
+            int h = 3 * _lineCount + confObject["contentRect"]["Height"].ToObject<int>() * _lineCount;
+            return h;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace GFLInterviewer.Core
             foreach (var node in nodes)
             {
                 int width = node.confObject.GetValue("width").ToObject<int>();
-                int height = node.confObject.GetValue("height").ToObject<int>();
+                int height = node.GetHeight();
                 int spacingY = node.confObject.GetValue("spacingY").ToObject<int>();
                 
                 
@@ -47,7 +47,7 @@ namespace GFLInterviewer.Core
             foreach (var node in nodes)
             {
                 var nodeConf = node.confObject;
-                y += nodeConf.GetValue("height").ToObject<int>();
+                y += node.GetHeight();
                 y += nodeConf.GetValue("spacingY").ToObject<int>();
             }
 

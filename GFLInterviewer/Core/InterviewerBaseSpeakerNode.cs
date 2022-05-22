@@ -211,5 +211,10 @@ namespace GFLInterviewer.Core
 
             confObject = InterviewerCore.GetConfigObject(conf);
         }
+
+        public override int GetHeight()
+        {
+            return confObject.GetValue("height").ToObject<int>();
+        }
     }
 }

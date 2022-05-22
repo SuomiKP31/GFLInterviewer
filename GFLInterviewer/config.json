@@ -62,10 +62,10 @@
       "height": 200,
 
       "contentRect" : {
-        "PosX" : 325,
-        "PosY" : 45,
-        "Width" : 850,
-        "Height" : 100
+        "PosX" : 75,
+        "PosY" : 0,
+        "Width" : 1225,
+        "Height" : 45
       },
       "displayName" : "旁白节点",
       "spacingY" : 20
