@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Drawing;
+using System.Numerics;
 using ImGuiNET;
 using Newtonsoft.Json.Linq;
 
@@ -34,9 +36,54 @@ namespace GFLInterviewer.Core
         }
 
 
-        public override void Render()
+        public override void Render(Graphics g, Rectangle rect)
         {
-            // TODO
+            // 0. Frame
+            Image frame = InterviewerCore.GetResourceImage(confObject.GetValue("frameFile").ToString());
+            g.DrawImage(frame, rect, new Rectangle(0, 0, frame.Width, frame.Height), GraphicsUnit.Pixel);
+            
+            // 1. Draw Avatar
+
+            Rectangle avatarRect = GetRectFromJObject((JObject)confObject.GetValue("avatarRect"));
+            avatarRect.X += rect.X;
+            avatarRect.Y += rect.Y;
+            
+            // Avatar Frame
+            Image avatar;
+            Pen avatarFramePen = new Pen(Color.Orange);
+            avatarFramePen.Width = 5;
+            
+            if (InterviewerCore.HasAvatar(avatarName))
+            {
+                
+                
+                g.DrawRectangle(avatarFramePen, avatarRect);
+
+                avatar = InterviewerCore.GetAvatarImage(avatarName);
+                g.DrawImage(avatar, avatarRect, new Rectangle(0, 0, avatar.Width, avatar.Height), GraphicsUnit.Pixel);
+            }
+            
+            
+            // 2. Speaker Name
+            Rectangle speakerRect = GetRectFromJObject((JObject)confObject.GetValue("speakerRect"));
+            speakerRect.X += rect.X;
+            speakerRect.Y += rect.Y;
+            
+           // g.DrawRectangle(avatarFramePen, speakerRect); // debug
+           InterviewerCore.SwitchFontSizeAndStyle(18.0f, FontStyle.Bold);
+           g.DrawString(speakerName, InterviewerCore.drawingFont, Brushes.White, speakerRect, GetStringFormatFromConfig(StrFormatType.Speaker));
+
+            // 3. Content Text
+
+            Rectangle contentRect = GetRectFromJObject((JObject) confObject.GetValue("contentRect"));
+            contentRect.X += rect.X;
+            contentRect.Y += rect.Y;
+            
+            InterviewerCore.SwitchFontSizeAndStyle(fontSize, FontStyle.Bold);
+            g.DrawString(content, InterviewerCore.drawingFont, Brushes.White, contentRect, GetStringFormatFromConfig(StrFormatType.Content));
+            
+            // g.DrawRectangle(avatarFramePen, contentRect);
+
         }
 
         public override void DrawNode()
@@ -64,8 +111,11 @@ namespace GFLInterviewer.Core
             DrawAvatarList();
             // ImGui.SameLine();
 
-            ImGui.InputFloat("字号", ref fontSize);
-            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(325,125));
+            if (ImGui.InputFloat("字号", ref fontSize, 1.0f))
+            {
+                fontSize = Math.Clamp(fontSize, 5.0f, 25.0f);
+            }
+            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(550,125));
         }
 
         public override JObject GenerateJObject()
@@ -98,6 +148,33 @@ namespace GFLInterviewer.Core
                 }
                 ImGui.EndCombo();
             }
+        }
+
+        protected StringFormat GetStringFormatFromConfig(StrFormatType fmtType)
+        {
+            var fmt = new StringFormat();
+            if (confObject.GetValue("speakerAlignmentRight").ToObject<bool>())
+            {
+                fmt.Alignment = StringAlignment.Far;
+            }
+            else
+            {
+                fmt.Alignment = StringAlignment.Near;
+            }
+
+            switch (fmtType)
+            {
+                case StrFormatType.Speaker:
+                    fmt.LineAlignment = StringAlignment.Center;
+                    break;
+                case StrFormatType.Content:
+                    // Do nothing
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fmtType), fmtType, null);
+            }
+
+            return fmt;
         }
     }
 }

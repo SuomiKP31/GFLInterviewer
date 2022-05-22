@@ -1,5 +1,6 @@
 ﻿using ImGuiNET;
 using System;
+using System.Drawing;
 using System.Numerics;
 using Newtonsoft.Json.Linq;
 
@@ -9,6 +10,12 @@ namespace GFLInterviewer.Core
     {
         DialogBubbleConfigL,
         DialogBubbleConfigR
+    }
+
+    public enum StrFormatType
+    {
+        Speaker,
+        Content
     }
     public abstract class InterviewerBaseNode
     {
@@ -27,7 +34,7 @@ namespace GFLInterviewer.Core
         /// Call Graphic api to draw on a bitmap png file
         /// TODO: parameters
         /// </summary>
-        public abstract void Render();
+        public abstract void Render(Graphics g, Rectangle rect);
         
         /// <summary>
         /// Call ImGui methods to draw the UI
@@ -65,6 +72,17 @@ namespace GFLInterviewer.Core
         {
             bool tooLong = content.Length > 11;
             return $"{speakerName}: {content.Substring(0, tooLong? 10 : content.Length)}...";
+        }
+
+        protected Rectangle GetRectFromJObject(JObject rect)
+        {
+            int x = rect.GetValue("PosX").ToObject<int>();
+            int y = rect.GetValue("PosY").ToObject<int>();
+            int w = rect.GetValue("Width").ToObject<int>();
+            int h = rect.GetValue("Height").ToObject<int>();
+
+            return new Rectangle(x, y, w, h);
+
         }
     }
 }

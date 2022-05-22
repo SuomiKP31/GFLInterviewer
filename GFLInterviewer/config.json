@@ -8,30 +8,54 @@
     "DialogBubbleConfigL" : {
       "width" : 1375,
       "height": 200,
-      "avatarPosX" : 25,
-      "avatarPosY" : 25,
-      "avatarWidth" : 150,
-      "avatarHeight" : 150,
-      "speakerX" : 225,
-      "speakerY" : 25,
-      "speakerWidth" : 200,
-      "speakerHeight" : 50,
+      "avatarRect" :{
+        "PosX": 25,
+        "PosY": 25,
+        "Width": 150,
+        "Height": 150
+      },
+      "speakerRect": {
+        "PosX" : 200,
+        "PosY" : 25,
+        "Width" : 200,
+        "Height" : 50
+      },
+      "contentRect" : {
+        "PosX" : 200,
+        "PosY" : 75,
+        "Width" : 750,
+        "Height" : 100
+      },
       "displayName" : "对话节点-左",
-      "spacingY" : 20
+      "frameFile" : "DialogFrameL.png",
+      "spacingY" : 20,
+      "speakerAlignmentRight" : 0
     },
     "DialogBubbleConfigR" : {
       "width" : 1375,
       "height": 200,
-      "avatarPosX" : 1200,
-      "avatarPosY" : 45,
-      "avatarWidth" : 150,
-      "avatarHeight" : 150,
-      "speakerX" : 950,
-      "speakerY" : 45,
-      "speakerWidth" : 200,
-      "speakerHeight" : 50,
+      "avatarRect": {
+        "PosX": 1200,
+        "PosY": 25,
+        "Width": 150,
+        "Height": 150
+      },
+      "speakerRect": {
+        "PosX" : 975,
+        "PosY" : 25,
+        "Width" : 200,
+        "Height" : 50
+      },
+      "contentRect" : {
+        "PosX" : 425,
+        "PosY" : 75,
+        "Width" : 750,
+        "Height" : 100
+      },
       "displayName" : "对话节点-右",
-      "spacingY" : 20
+      "frameFile" : "DialogFrameR.png",
+      "spacingY" : 20,
+      "speakerAlignmentRight" : 1
     }
   }
   

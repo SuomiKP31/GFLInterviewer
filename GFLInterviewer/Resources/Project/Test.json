@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "测试",
     "author": "Suomi",
-    "date": "2022-05-21T18:25:22.6699888+08:00"
+    "date": "2022-05-22T13:58:08.39062+08:00"
   },
   "speakers": [
     "索米",
@@ -13,21 +13,35 @@
       "nodeConf": 0,
       "speaker": "索米",
       "avatar": "SuomiMod3_n.png",
-      "content": "1axcvse",
+      "content": "（换行符测试）\nWe knew the world would not be the same\nFew people laughed, a few people cried, most people were silent",
       "fontSize": 15.0
     },
     {
       "nodeConf": 1,
       "speaker": "索米",
-      "avatar": "SuomiMod3_d.png",
-      "content": "2asxxxd",
+      "avatar": "SuomiMod3_n.png",
+      "content": "（wraptext测试）\nI remembered the line from the Hindu scripture, the Bhagavad-Gita...Vishnu is trying to persuade the Prince that he should do his duty",
       "fontSize": 15.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "（大字号测试）\nAnd to impress him, takes on his multi-armed form and says:",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_d.png",
+      "content": "Now I am become Death, the destroyer of worlds.\nI suppose we all thought that, one way or another.",
+      "fontSize": 20.0
     },
     {
       "nodeConf": 0,
       "speaker": "指挥官",
       "avatar": "",
-      "content": "测试文本",
+      "content": "（标点符号Glyph）\n，。、《》？；’‘”“：{}|【】、~！（）",
       "fontSize": 18.0
     }
   ]

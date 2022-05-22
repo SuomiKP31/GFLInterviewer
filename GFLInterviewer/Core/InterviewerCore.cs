@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Text;
 using GFLInterviewer.UI;
 using ImGuiNET;
 using Newtonsoft.Json;
@@ -20,7 +21,12 @@ namespace GFLInterviewer.Core
 
         static JObject configJson;
 
+        // Font holder
         public static string fontPath;
+        public static Font drawingFont;
+        static PrivateFontCollection pfc = new PrivateFontCollection();
+        
+        
 
         public static string resourcePath;
         public static string avatarPath;
@@ -54,10 +60,23 @@ namespace GFLInterviewer.Core
             file.Close();
         }
         
-        public static void HandleFont()
+        static void HandleFont()
         {
             fontPath = configJson.GetValue("fontPath").ToString();
             
+            pfc.AddFontFile(fontPath);
+            drawingFont = new Font(pfc.Families[0], 25.0f);
+
+        }
+
+        public static void SwitchFontSize(float size)
+        {
+            drawingFont = new Font(pfc.Families[0], size, drawingFont.Style);
+        }
+
+        public static void SwitchFontSizeAndStyle(float size, FontStyle style)
+        {
+            drawingFont = new Font(pfc.Families[0], size, style);
         }
 
         /// <summary>
@@ -163,6 +182,21 @@ namespace GFLInterviewer.Core
 
             avatarImages = newDict;
             
+        }
+
+        public static Image GetResourceImage(string name)
+        {
+            return resourceImages[name];
+        }
+
+        public static Image GetAvatarImage(string name)
+        {
+            return avatarImages[name];
+        }
+
+        public static bool HasAvatar(string name)
+        {
+            return avatarImages.ContainsKey(name);
         }
         
         public static List<string> GetAvatarNames()

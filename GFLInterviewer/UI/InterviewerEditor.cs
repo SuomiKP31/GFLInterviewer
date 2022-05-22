@@ -48,6 +48,8 @@ namespace GFLInterviewer.UI
         string _speakerName;
         bool _isAddingSpeaker;
 
+        int _criticalOps = 0;
+
         InterviewerBaseNode _currentNode;
         int _curNodeIndex = 0;
         #endregion
@@ -152,11 +154,13 @@ namespace GFLInterviewer.UI
             _curNodeIndex = index < 0 ? 0 : index;
             _currentNode = _project.GetNode(_curNodeIndex);
             UpdateNodeListWindow();
+            CriticalOpCounter();
         }
 
         public void AddNode(NodeConf conf)
         {
             int index = _project.CreateNode(conf);
+            CriticalOpCounter(3);
             SelectNode(index);
         }
 
@@ -174,6 +178,24 @@ namespace GFLInterviewer.UI
         {
             _project.RemoveNode(_curNodeIndex);
             PrevNode();
+            CriticalOpCounter(3);
+        }
+
+        /// <summary>
+        /// Trigger auto save after a few critical ops
+        /// Remove/Add counts more than one
+        /// </summary>
+        /// <param name="worth">How important you consider the operation to be, value > 10 triggers save immediately</param>
+        public void CriticalOpCounter(int worth = 1)
+        {
+            _criticalOps += worth;
+            if (_criticalOps > 10)
+            {
+                SaveFile();
+                InterviewerCore.LogInfo("已自动保存");
+                _criticalOps = 0;
+
+            }
         }
 
         #region Project File Operation
@@ -187,10 +209,12 @@ namespace GFLInterviewer.UI
         {
             WriteMetaData();
             _project.SaveInstanceToFile();
+            InterviewerCore.LogInfo($"{_fileName}已保存。");
         }
 
         void OutputPngFile()
         {
+            CriticalOpCounter(11);
             InterviewerPainter.RenderPngFile(_project);
         }
         #endregion
