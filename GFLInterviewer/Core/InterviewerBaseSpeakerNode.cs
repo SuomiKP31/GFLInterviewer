@@ -8,7 +8,7 @@ namespace GFLInterviewer.Core
 {
     public class InterviewerBaseSpeakerNode : InterviewerBaseNode
     {
-        string avatarName;
+        public string avatarName;
 
         public static InterviewerBaseSpeakerNode CreateInstance(InterviewerProjectFile owner, NodeConf conf)
         {

@@ -2,7 +2,7 @@
   "meta": {
     "projectName": "测试",
     "author": "Suomi",
-    "date": "2022-05-22T20:05:31.1622961+08:00"
+    "date": "2022-05-26T11:51:46.9632434+08:00"
   },
   "speakers": [
     "索米",
@@ -89,7 +89,7 @@
     {
       "nodeConf": 1,
       "speaker": "指挥官",
-      "avatar": "",
+      "avatar": "GK.png",
       "content": "Test",
       "fontSize": 20.0
     },
@@ -112,6 +112,20 @@
       "speaker": "索米",
       "avatar": "SuomiMod3_n.png",
       "content": "完成",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "",
       "fontSize": 20.0
     }
   ]

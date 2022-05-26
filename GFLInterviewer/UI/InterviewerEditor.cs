@@ -188,6 +188,7 @@ namespace GFLInterviewer.UI
                 // GetNode will return the last node if parameter < 0
                 _curNodeIndex = _project.GetNodeList().Count - 1;
             }
+            _subWindow?.SelectNode(_currentNode);
         }
 
         protected void AddNode(NodeConf conf)
@@ -204,6 +205,8 @@ namespace GFLInterviewer.UI
 
         protected void NextNode()
         {
+            _project.UpdateNodeCache(_curNodeIndex); // Update node speaker/avatar cache. 
+            // Cause: When you click this button, the previous node is likely completed
             SelectNode(_curNodeIndex + 1);
         }
 

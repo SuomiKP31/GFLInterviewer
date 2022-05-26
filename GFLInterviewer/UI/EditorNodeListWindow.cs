@@ -16,6 +16,11 @@ namespace GFLInterviewer.UI
             return wd;
         }
 
+        public void SelectNode(InterviewerBaseNode node)
+        {
+            _curListSelectedNode = node;
+        }
+
         protected override void DrawMenuBar()
         {
             

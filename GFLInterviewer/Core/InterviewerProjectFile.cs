@@ -133,6 +133,11 @@ namespace GFLInterviewer.Core
 
         #region Nodes
 
+        // Map NodeConf to specific speaker and avatar, acting as cache
+        // Automatically fill these values when corresponding nodes are created
+        Dictionary<NodeConf, string> _speakerMap = new Dictionary<NodeConf, string>();
+        Dictionary<NodeConf, string> _avatarMap = new Dictionary<NodeConf, string>();
+        
         /// <summary>
         /// Create a new node of specific configuration
         /// </summary>
@@ -146,6 +151,16 @@ namespace GFLInterviewer.Core
             {
                 node = InterviewerBaseSpeakerNode.CreateInstance(this, conf);
                 index = nodeList.Count;
+                if (_speakerMap.ContainsKey(conf))
+                {
+                    // Cached
+                    node.speakerName = _speakerMap[conf];
+                }
+
+                if (_avatarMap.ContainsKey(conf))
+                {
+                    ((InterviewerBaseSpeakerNode) node).avatarName = _avatarMap[conf];
+                }
             }
             else
             {
@@ -214,6 +229,25 @@ namespace GFLInterviewer.Core
         public List<InterviewerBaseNode> GetNodeList()
         {
             return nodeList;
+        }
+
+        public void UpdateNodeCache(int index)
+        {
+            var prevNode = nodeList[index];
+            if (prevNode is InterviewerBaseSpeakerNode speakerNode)
+            {
+                if (speakerNode.speakerName != string.Empty)
+                {
+                    _speakerMap[speakerNode.conf] = speakerNode.speakerName;
+                }
+
+                if (speakerNode.avatarName != string.Empty)
+                {
+                    _avatarMap[speakerNode.conf] = speakerNode.avatarName;
+                }
+                
+            }
+            
         }
         #endregion
         

@@ -1,0 +1,174 @@
+﻿{
+  "meta": {
+    "projectName": "访谈篇-索米 MOD3",
+    "author": "Suomi",
+    "date": "2022-05-26T11:56:14.2231649+08:00"
+  },
+  "speakers": [
+    "索米",
+    "指挥官"
+  ],
+  "nodes": [
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "心智记录数据库入口：NSIG-90\n--[提示：字节对齐异常]--\n--[警告：侦测到可能的文件损坏]--\n未知日期，\n19点31分。\n未知地点，安全屋。\n",
+      "fontSize": 20.0,
+      "lineCount": 6
+    },
+    {
+      "nodeConf": 2,
+      "speaker": "",
+      "content": "数据播放开始。\n",
+      "fontSize": 20.0,
+      "lineCount": 1
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "指挥官晚好。不知道这么晚了，找我有何贵干？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "对新的素体，感觉如何？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "我感觉还不错啊。您是在担心什么吗？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "实话说……看过任务录像之后，我也是一身冷汗。\n是我的情报工作不周，导致你们陷入那么大的风险。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "虽然在可控环境下测试过你的性能，但我想还是应该关心一下你自己的感觉。IOP的人也提了要求，让我择时和你聊聊。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "嗯…目前为止还好？虽然现在偶尔也担心那条指令会不会哪天杀回来弄得我睡不着觉…但我想我已经战胜它了吧。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "那么，和波波沙的比试如何了呢？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "当然是我赢了。",
+      "fontSize": 13.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "是吗？波波沙说是平手呢。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "训练场里是差不多啦，所以我们下场去厨房又比了一场。结果是春田说我炸的鳕鱼排更好吃哦。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "原来如此…那么你们就算是和解了？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "我想是吧…回想起以前，我想还是我做错的时候更多。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "你跟她道歉了？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "没有！",
+      "fontSize": 35.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "哇，突然这么激动干什么……",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "抱歉…我可能还需要适应。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "算了，还是不聊她了。换个话题吧",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "嗯。指挥官想聊些什么？",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "就说说格琳娜给你置办的这身行头如何？比起你的旧衣服好像花哨不少呢。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "哼哼，那我可有得讲了。这一身衣服，我休眠的时候在二级平层可没跟格琳娜少battle。",
+      "fontSize": 20.0
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "哦？来说说看吧。",
+      "fontSize": 20.0
+    }
+  ]
+}
