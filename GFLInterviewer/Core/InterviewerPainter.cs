@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 
 namespace GFLInterviewer.Core
 {
@@ -17,6 +18,7 @@ namespace GFLInterviewer.Core
             // Base Black Image
             Bitmap baseImage = new Bitmap(totalWidth, totalLength, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(baseImage);
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
             g.FillRectangle(Brushes.Black, 0, 0, totalWidth, totalLength);
 
             // Initial Offsets

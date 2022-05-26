@@ -30,6 +30,7 @@ namespace GFLInterviewer.Core
             node.avatarName = nodeJson.GetValue("avatar").ToString();
             node.content = nodeJson.GetValue("content").ToString();
             node.fontSize = nodeJson.GetValue("fontSize").ToObject<float>();
+            node.colorVector = nodeJson.GetValue("color").ToObject<Vector3>();
 
             node.confObject = InterviewerCore.GetConfigObject(node.conf);
             return node;
@@ -78,9 +79,12 @@ namespace GFLInterviewer.Core
             Rectangle contentRect = GetRectFromJObject((JObject) confObject.GetValue("contentRect"));
             contentRect.X += rect.X;
             contentRect.Y += rect.Y;
-            
+
+
+            Color fontColor = GFLIUtils.MapColorVector(colorVector);
+            Brush textBrush = new SolidBrush(fontColor);
             InterviewerCore.SwitchFontSizeAndStyle(fontSize, FontStyle.Bold);
-            g.DrawString(content, InterviewerCore.drawingFont, Brushes.White, contentRect, GetStringFormatFromConfig(StrFormatType.Content));
+            g.DrawString(content, InterviewerCore.drawingFont, textBrush, contentRect, GetStringFormatFromConfig(StrFormatType.Content));
             
             // g.DrawRectangle(avatarFramePen, contentRect);
 
@@ -122,6 +126,9 @@ namespace GFLInterviewer.Core
             {
                 ChangeDirectionConf();
             }
+
+            ImGui.ColorEdit3("字体颜色", ref colorVector, ImGuiColorEditFlags.Uint8);
+            ImGui.Text($"{colorVector.X} , {colorVector.Y} , {colorVector.Z}");
         }
 
         public override JObject GenerateJObject()
@@ -132,6 +139,9 @@ namespace GFLInterviewer.Core
             ret.Add("avatar", avatarName);
             ret.Add("content", content);
             ret.Add("fontSize", fontSize);
+            
+            // serialize color RGB as JArray
+            ret.Add("color", JToken.FromObject(colorVector));
             return ret;
         }
 
@@ -180,7 +190,7 @@ namespace GFLInterviewer.Core
                     fmt.LineAlignment = StringAlignment.Center;
                     break;
                 case StrFormatType.Content:
-                    // Do nothing
+                    fmt.Trimming = StringTrimming.Character;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(fmtType), fmtType, null);

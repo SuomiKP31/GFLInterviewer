@@ -45,7 +45,7 @@ namespace GFLInterviewer.UI
         protected override void DrawBody()
         {
             ImGui.Text("FANART MAKER CREATED BY SUOMI");
-            ImGui.InputTextWithHint("项目名称", "填入想创建的文件名", ref m_projectName, 16);
+            ImGui.InputTextWithHint("项目名称", "填入想创建的文件名", ref m_projectName, 32);
             if (ImGui.Button("创建项目"))
             {
                 CreateProjectFile(m_projectName);

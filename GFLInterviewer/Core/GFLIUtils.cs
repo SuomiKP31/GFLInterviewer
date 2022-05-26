@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Numerics;
 using System.Text;
 
 namespace GFLInterviewer.Core
@@ -21,6 +23,17 @@ namespace GFLInterviewer.Core
             }
 
             return newList;
+        }
+
+        private static int MapColorFloatToInt(float v)
+        {
+            float mapped = (v / 1) * 255;
+            return Convert.ToInt32(mapped);
+        }
+
+        public static Color MapColorVector(Vector3 color)
+        {
+            return Color.FromArgb(MapColorFloatToInt(color.X), MapColorFloatToInt(color.Y), MapColorFloatToInt(color.Z));
         }
     }
 }

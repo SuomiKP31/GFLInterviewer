@@ -24,6 +24,7 @@ namespace GFLInterviewer.Core
         public string speakerName = "";
         public string content = "";
         public float fontSize = 20.0f;
+        public Vector3 colorVector = new Vector3(1,1,1);
         protected InterviewerProjectFile owner;
 
         public NodeConf conf; // Config name of the node

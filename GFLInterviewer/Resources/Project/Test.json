@@ -1,132 +1,50 @@
 ﻿{
   "meta": {
-    "projectName": "测试",
-    "author": "Suomi",
-    "date": "2022-05-26T11:51:46.9632434+08:00"
+    "projectName": "标题",
+    "author": "",
+    "date": "2022-05-26T20:52:14.1076026+08:00"
   },
   "speakers": [
-    "索米",
-    "指挥官"
+    "",
+    "AAS",
+    "索米"
   ],
   "nodes": [
     {
       "nodeConf": 0,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "（换行符测试）\nWe knew the world would not be the same\nFew people laughed, a few people cried, most people were silent",
-      "fontSize": 15.0
-    },
-    {
-      "nodeConf": 1,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "（wraptext测试）\nI remembered the line from the Hindu scripture, the Bhagavad-Gita...Vishnu is trying to persuade the Prince that he should do his duty",
-      "fontSize": 15.0
-    },
-    {
-      "nodeConf": 0,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "（大字号测试）\nAnd to impress him, takes on his multi-armed form and says:",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 1,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_d.png",
-      "content": "Now I am become Death, the destroyer of worlds.\nI suppose we all thought that, one way or another.",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 0,
-      "speaker": "指挥官",
-      "avatar": "",
-      "content": "（标点符号Glyph）\n，。、《》？；’‘”“：{}|【】、~！（）",
-      "fontSize": 18.0
-    },
-    {
-      "nodeConf": 1,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_d.png",
-      "content": "换方向测试",
-      "fontSize": 25.0
-    },
-    {
-      "nodeConf": 2,
-      "speaker": "",
-      "content": "这是旁白Test\n第二行\n第三行",
-      "fontSize": 20.0,
-      "lineCount": 3
-    },
-    {
-      "nodeConf": 0,
-      "speaker": "指挥官",
-      "avatar": "",
-      "content": "旁白之后排版",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 0,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_d.png",
-      "content": "插入节点测试",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 2,
-      "speaker": "",
-      "content": "这是一个好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长好长的旁白",
-      "fontSize": 20.0,
-      "lineCount": 10
-    },
-    {
-      "nodeConf": 0,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "Test AutoCreation 1",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 1,
-      "speaker": "指挥官",
+      "speaker": "AAS",
       "avatar": "GK.png",
-      "content": "Test",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 2,
-      "speaker": "",
-      "content": "旁白1",
+      "content": "红字",
       "fontSize": 20.0,
-      "lineCount": 1
-    },
-    {
-      "nodeConf": 2,
-      "speaker": "",
-      "content": "自动创建旁白2",
-      "fontSize": 20.0,
-      "lineCount": 6
+      "color": {
+        "X": 1.0,
+        "Y": 0.0,
+        "Z": 0.0
+      }
     },
     {
       "nodeConf": 1,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "完成",
-      "fontSize": 20.0
+      "speaker": "AAS",
+      "avatar": "GK.png",
+      "content": "绿字",
+      "fontSize": 20.0,
+      "color": {
+        "X": 0.43037975,
+        "Y": 1.0,
+        "Z": 0.0
+      }
     },
     {
       "nodeConf": 0,
-      "speaker": "索米",
-      "avatar": "SuomiMod3_n.png",
-      "content": "",
-      "fontSize": 20.0
-    },
-    {
-      "nodeConf": 1,
-      "speaker": "指挥官",
-      "avatar": "GK.png",
-      "content": "",
-      "fontSize": 20.0
+      "speaker": "AAS",
+      "avatar": "SuomiMod3_d.png",
+      "content": "蓝字",
+      "fontSize": 20.0,
+      "color": {
+        "X": 0.0,
+        "Y": 0.91139245,
+        "Z": 1.0
+      }
     }
   ]
 }
