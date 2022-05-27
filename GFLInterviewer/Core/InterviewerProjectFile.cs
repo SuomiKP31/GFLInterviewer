@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -30,6 +31,8 @@ namespace GFLInterviewer.Core
             JArray speakerArray = interviewerJsonObject.GetValue("speakers") as JArray;
             SetSpeakerData(speakerArray.ToObject<List<string>>());
             
+            JObject cPresetDict = interviewerJsonObject.GetValue("colorPresets") as JObject;
+            SetColorPresetData(cPresetDict.ToObject<Dictionary<string, Vector3>>());
             
             nodeList = new List<InterviewerBaseNode>();
             JArray nodeJsonArray = interviewerJsonObject.GetValue("nodes") as JArray;
@@ -56,6 +59,11 @@ namespace GFLInterviewer.Core
             speakerNames = speakers;
         }
 
+        public void SetColorPresetData(Dictionary<string, Vector3> cPresets)
+        {
+            colorPresets = cPresets;
+        }
+
         public void SetNodesData(JArray jObjList)
         {
             foreach (var nodeJson in jObjList)
@@ -77,15 +85,6 @@ namespace GFLInterviewer.Core
             
         }
 
-        public void AddSpeaker(string speaker)
-        {
-            if (speakerNames.Contains(speaker))
-            {
-                return;
-            }
-            speakerNames.Add(speaker);
-        }
-
         void WriteHeader()
         {
             // Metadata
@@ -103,6 +102,9 @@ namespace GFLInterviewer.Core
             }
 
             interviewerJsonObject["speakers"] = speakers;
+            
+            // Color Presets
+            interviewerJsonObject["colorPresets"] = JObject.FromObject(colorPresets);
         }
 
         void WriteNodes()
@@ -125,10 +127,50 @@ namespace GFLInterviewer.Core
         public string author;
 
         public List<string> speakerNames;
+        public Dictionary<string, Vector3> colorPresets;
+
         JObject interviewerJsonObject;
         List<InterviewerBaseNode> nodeList;
         public string fileName;
         
+        
+        public void AddSpeaker(string speaker)
+        {
+            if (speakerNames.Contains(speaker))
+            {
+                return;
+            }
+            speakerNames.Add(speaker);
+        }
+
+        public void RemoveSpeaker(string speaker)
+        {
+            if (speakerNames.Contains(speaker))
+            {
+                speakerNames.Remove(speaker);
+            }
+            else
+            {
+                InterviewerCore.LogInfo($"没有找到说话人{speaker}");
+            }
+        }
+
+        public void AddColorPreset(string presetName, Vector3 cVector)
+        {
+            colorPresets.Add(presetName, cVector);
+        }
+
+        public void RemoveColorPreset(string presetName)
+        {
+            if (colorPresets.ContainsKey(presetName))
+            {
+                colorPresets.Remove(presetName);
+            }
+            else
+            {
+                InterviewerCore.LogInfo($"没有找到颜色预设{presetName}");
+            }
+        }
         #endregion
 
         #region Nodes
@@ -279,6 +321,7 @@ namespace GFLInterviewer.Core
             var f = new InterviewerProjectFile();
             f.SetJsonObject(new JObject());
             f.speakerNames = new List<string>();
+            f.colorPresets = new Dictionary<string, Vector3>();
             f.nodeList = new List<InterviewerBaseNode>();
             return f;
         }

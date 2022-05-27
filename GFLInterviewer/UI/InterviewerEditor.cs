@@ -23,6 +23,7 @@ namespace GFLInterviewer.UI
             _titleName = file.projectName;
             _author = file.author;
             _speakerName = "";
+            _colorPresetName = "";
             _name = "Editor";
             SelectNode(0);
 
@@ -54,8 +55,14 @@ namespace GFLInterviewer.UI
         string _titleName;
         string _author;
         
+        // UI temp values
         string _speakerName;
         bool _isAddingSpeaker;
+        bool _isDeletingSpeaker;
+
+        string _colorPresetName;
+        bool _isAddingColorPreset;
+        bool _isDeletingColorPreset;
 
         int _criticalOps = 0;
 
@@ -86,6 +93,13 @@ namespace GFLInterviewer.UI
                     if (ImGui.MenuItem("增加说话者"))
                     {
                         _isAddingSpeaker = true;
+                        _isDeletingSpeaker = false;
+                    }
+
+                    if (ImGui.MenuItem("删除说话者"))
+                    {
+                        _isDeletingSpeaker = true;
+                        _isAddingSpeaker = false;
                     }
                     ImGui.EndMenu();
                 }
@@ -118,6 +132,34 @@ namespace GFLInterviewer.UI
                     }
                     ImGui.EndMenu();
                 }
+                if (ImGui.BeginMenu("颜色预设"))
+                {
+                    if (ImGui.MenuItem("添加当前节点颜色为预设"))
+                    {
+                        _isAddingColorPreset = true;
+                        _isDeletingColorPreset = false;
+                    }
+
+                    if (ImGui.MenuItem("删除颜色预设"))
+                    {
+                        _isDeletingColorPreset = true;
+                        _isAddingColorPreset = false;
+                    }
+
+                    if (ImGui.BeginMenu("应用颜色预设…"))
+                    {
+                        foreach (var colorKv in _project.colorPresets)
+                        {
+                            if (ImGui.MenuItem(colorKv.Key))
+                            {
+                                _currentNode.colorVector = colorKv.Value;
+                            }
+                        }
+                        ImGui.EndMenu();
+                    }
+
+                    ImGui.EndMenu();
+                }
                 ImGui.EndMenuBar();
             }
         }
@@ -130,16 +172,48 @@ namespace GFLInterviewer.UI
             ImGui.InputTextWithHint("题目", "项目题头", ref _titleName, 36);
             ImGui.InputTextWithHint("作者", "作者", ref _author, 36);
 
-            if (_isAddingSpeaker)
+            if (_isAddingSpeaker || _isDeletingSpeaker)
             {
                 ImGui.Separator();
                 ImGui.InputTextWithHint("说话者", "新说话者名", ref _speakerName, 16);
                 ImGui.SameLine();
-                if (ImGui.Button("添加"))
+                if (ImGui.Button(_isAddingSpeaker ? "添加" : "删除"))
                 {
-                    _project.AddSpeaker(_speakerName);
-                    _isAddingSpeaker = false;
+                    if (_isAddingSpeaker)
+                    {
+                        _project.AddSpeaker(_speakerName);
+                        _isAddingSpeaker = false;
+                    }
+
+                    if (_isDeletingSpeaker)
+                    {
+                        _project.RemoveSpeaker(_speakerName);
+                        _isAddingSpeaker = false;
+                    }
                 }
+                ImGui.Separator();
+            }
+
+            if (_isAddingColorPreset)
+            {
+                ImGui.Separator();
+                ImGui.InputTextWithHint("预设名", "颜色预设名字", ref _colorPresetName, 16);
+                ImGui.SameLine();
+                if (ImGui.Button(_isAddingColorPreset ? "添加" : "删除"))
+                {
+                    if (_isAddingColorPreset)
+                    {
+                        _project.AddColorPreset(_colorPresetName, _currentNode.colorVector);
+                        _isAddingColorPreset = false;
+                    }
+
+                    if (_isDeletingColorPreset)
+                    {
+                        _project.RemoveColorPreset(_colorPresetName);
+                        _isAddingColorPreset = false;
+                    }
+                }
+                ImGui.Separator();
             }
 
             if (_currentNode != null)

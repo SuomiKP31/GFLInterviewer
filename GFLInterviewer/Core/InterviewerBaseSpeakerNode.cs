@@ -120,7 +120,7 @@ namespace GFLInterviewer.Core
                 fontSize = Math.Clamp(fontSize, 5.0f, 35.0f);
             }
             
-            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(550,125));
+            ImGui.InputTextMultiline("内容", ref content, 160, new Vector2(550,125));
             
             if (ImGui.Button("切换方向"))
             {
@@ -128,7 +128,7 @@ namespace GFLInterviewer.Core
             }
 
             ImGui.ColorEdit3("字体颜色", ref colorVector, ImGuiColorEditFlags.Uint8);
-            ImGui.Text($"{colorVector.X} , {colorVector.Y} , {colorVector.Z}");
+            // ImGui.Text($"{colorVector.X} , {colorVector.Y} , {colorVector.Z}");
         }
 
         public override JObject GenerateJObject()

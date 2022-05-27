@@ -16,6 +16,7 @@ namespace GFLInterviewer.Core
             node.conf = conf;
             node.confObject = InterviewerCore.GetConfigObject(conf);
             node._lineCount = 1;
+            node.colorVector = new Vector3(1, 0.65f, 0); // 255,165,0 - Orange
             return node;
         }
 
@@ -29,6 +30,7 @@ namespace GFLInterviewer.Core
             node.content = nodeJson.GetValue("content").ToString();
             node.fontSize = nodeJson.GetValue("fontSize").ToObject<float>();
             node._lineCount = nodeJson.GetValue("lineCount").ToObject<int>();
+            node.colorVector = nodeJson.GetValue("color").ToObject<Vector3>();
 
             node.confObject = InterviewerCore.GetConfigObject(node.conf);
             return node;
@@ -51,7 +53,7 @@ namespace GFLInterviewer.Core
             contentRect.Y += rect.Y;
 
             Brush narratorBgBrush = new SolidBrush(Color.FromArgb(31,31,31));
-            Pen framePen = new Pen(Color.Orange);
+            Pen framePen = new Pen(GFLIUtils.MapColorVector(colorVector));
             framePen.Width = 3;
             g.FillRectangle(narratorBgBrush, contentRect);
             g.DrawRectangle(framePen, contentRect);
@@ -67,6 +69,7 @@ namespace GFLInterviewer.Core
             // Typically you don't need to change that.
             
             ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(550,125));
+            ImGui.ColorEdit3("边框颜色", ref colorVector, ImGuiColorEditFlags.Uint8);
         }
         
         public override JObject GenerateJObject()
@@ -77,6 +80,7 @@ namespace GFLInterviewer.Core
             ret.Add("content", content);
             ret.Add("fontSize", fontSize);
             ret.Add("lineCount", _lineCount);
+            ret.Add("color", JToken.FromObject(colorVector));
             return ret;
         }
 
