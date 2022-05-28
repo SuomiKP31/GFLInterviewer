@@ -1,0 +1,446 @@
+﻿{
+  "meta": {
+    "projectName": "索米Mod3 访谈篇 P3 行装 II",
+    "author": "Suomi as Revenant",
+    "date": "2022-05-28T16:27:44.9286232+08:00"
+  },
+  "speakers": [
+    "索米",
+    "指挥官"
+  ],
+  "colorPresets": {},
+  "nodes": [
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "（啜一口）啊…很久没喝过苏打水了。要是能配点果汁和伏特加调成鸡尾酒就好了。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "调酒你也会吗？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "我们不是有个酒保来着？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "实话说，我只是不敢再给你酒精而已。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "……是说去年圣诞节的事么？",
+      "fontSize": 15.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "我就这么说，那一晚你给我造成的损失，和改造你花的钱差不多。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "（叹气）知道了，那就请指挥官独饮吧。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "希望这次改造至少能让我的酒量变好一点吧……那次也太丢人了。",
+      "fontSize": 15.0,
+      "color": {
+        "X": 0.0,
+        "Y": 1.0,
+        "Z": 0.98734164
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "你腰间别着的那一瓶是什么？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "啊，这个是莫洛托夫鸡尾酒……",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "哦？是没听过的牌子，哪里弄到的？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "是汽油啦。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "你……你是增加了新的供能方式？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "这也是我这身行装的一部分哦。如果遇到轻装甲，一只汽油弹也许可以拿来应急吧？毕竟不管是我自己还是历史上的我们，都吃过亏呢。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "是这样。那么“莫洛托夫”这个名字是怎么来的呢？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "这就要说到1939年的事了。那时候苏联违背国际公约轰炸了芬兰的平民，可是他们的外长竟然公开宣称他们空投的是赈济灾民的面包。这位外长名叫莫洛托夫，所以我们就把他们丢的炸弹叫做“莫洛托夫的面包篮”。",
+      "fontSize": 15.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "所以，那个时候，攻击平民还会引发国际谴责？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "哼，是啊。哪像现在，某些混账对着城市投放WMD也不会有人站出来说什么。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "我确实一直能感觉到我们在一只不受控制的扁舟上向远离文明的方向漂流。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "后来旧苏联也没顾上那些谴责就是了。他们直接把五十万军队开进了我们的国土。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "哈。现在不知道整个西苏还有没有这么多人。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "当时的芬军，是内外交困。内部还有叛军没有扫平，外部孤立无援，装甲和飞机都没有多少。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "所以……很快就战败了？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "……",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "别这样看着我，只是逻辑推断。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "我们动用了一切力量击退他们的钢铁洪流。这其中发挥了重要作用的就是我们的酒厂。\n战士们非常缺少反坦克步枪和火炮，于是就用高度酒精制成的汽油弹丢向敌人的装甲车。\n俄国人给我们送来“面包”，我们就用一杯烈酒回敬他们。这就是“莫洛托夫鸡尾酒”的来源。",
+      "fontSize": 15.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "原来如此，那最后打赢了吗？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "（长叹）没有。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "真是一段悲壮的历史啊。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "我再去拿罐苏打水。您还要酒吗？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "把柜子上那瓶杰克丹尼拿下来。再给我讲讲你腰上那根武装带吧？你好像一直带着它。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "啊，这是芬军的27式军官皮带。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "对你有什么特殊意义？",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "倒没有，正好能挂得上我的弹鼓就是了。更现代的一些战术装备，都是对着北约制式弹匣的尺寸设计的，我带了也没用。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 1,
+      "speaker": "指挥官",
+      "avatar": "GK.png",
+      "content": "哈哈……勾勒出一副好腰身啊。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    },
+    {
+      "nodeConf": 0,
+      "speaker": "索米",
+      "avatar": "SuomiMod3_n.png",
+      "content": "呃……您是不是有点醉了。",
+      "fontSize": 20.0,
+      "color": {
+        "X": 1.0,
+        "Y": 1.0,
+        "Z": 1.0
+      }
+    }
+  ]
+}

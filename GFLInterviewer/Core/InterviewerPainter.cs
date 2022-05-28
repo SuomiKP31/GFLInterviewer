@@ -9,9 +9,16 @@ namespace GFLInterviewer.Core
     {
         // Static API. Called from core. Render InterviewerNode to a png file, and output.
 
+        public static bool _renderHeader;
         public static void RenderPngFile(InterviewerProjectFile proj)
         {
-            var nodes = proj.GetNodeList();
+            var nodes = new List<InterviewerBaseNode>(proj.GetNodeList());
+            if (_renderHeader)
+            {
+                nodes.Insert(0, new InterviewerHeaderNode());
+                nodes[0].speakerName = proj.author;
+                nodes[0].content = proj.projectName;
+            }
             var totalLength = CalcLength(nodes);
             var totalWidth = 1405;
 

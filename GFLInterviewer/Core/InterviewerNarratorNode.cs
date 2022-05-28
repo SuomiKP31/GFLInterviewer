@@ -68,7 +68,7 @@ namespace GFLInterviewer.Core
             // I decided to fix the fontsize to 20 in narrator nodes.
             // Typically you don't need to change that.
             
-            ImGui.InputTextMultiline("内容", ref content, 256, new Vector2(550,125));
+            ImGui.InputTextMultiline("内容", ref content, 512, new Vector2(550,125));
             ImGui.ColorEdit3("边框颜色", ref colorVector, ImGuiColorEditFlags.Uint8);
         }
         

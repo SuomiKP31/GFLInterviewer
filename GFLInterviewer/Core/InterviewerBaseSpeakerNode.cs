@@ -120,7 +120,7 @@ namespace GFLInterviewer.Core
                 fontSize = Math.Clamp(fontSize, 5.0f, 35.0f);
             }
             
-            ImGui.InputTextMultiline("内容", ref content, 160, new Vector2(550,125));
+            ImGui.InputTextMultiline("内容", ref content, 384, new Vector2(550,125));
             
             if (ImGui.Button("切换方向"))
             {

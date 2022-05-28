@@ -169,9 +169,10 @@ namespace GFLInterviewer.UI
             ImGui.Text($"文件：{_fileName}");
             ImGui.SameLine();
             ImGui.Text($"节点数： {_project.GetNodeList().Count}");
-            ImGui.InputTextWithHint("题目", "项目题头", ref _titleName, 36);
+            ImGui.InputTextWithHint("题目", "项目题头", ref _titleName, 128);
             ImGui.InputTextWithHint("作者", "作者", ref _author, 36);
 
+            // Add speaker option
             if (_isAddingSpeaker || _isDeletingSpeaker)
             {
                 ImGui.Separator();
@@ -194,6 +195,7 @@ namespace GFLInterviewer.UI
                 ImGui.Separator();
             }
 
+            // Add color preset option
             if (_isAddingColorPreset)
             {
                 ImGui.Separator();
@@ -216,6 +218,7 @@ namespace GFLInterviewer.UI
                 ImGui.Separator();
             }
 
+            // Draw Node
             if (_currentNode != null)
             {
                 ImGui.Separator();
@@ -236,10 +239,18 @@ namespace GFLInterviewer.UI
                     RemoveCurNode();
                 }
 
+                ImGui.Separator();
                 if (ImGui.Button("输出png"))
                 {
                     OutputPngFile();
                 }
+                ImGui.SameLine();
+                if (ImGui.Button("保存文件"))
+                {
+                    SaveFile();
+                }
+                ImGui.SameLine();
+                ImGui.Checkbox("添加Header", ref InterviewerPainter._renderHeader);
             }
             
         }
