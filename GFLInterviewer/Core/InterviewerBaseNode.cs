@@ -26,11 +26,13 @@ namespace GFLInterviewer.Core
         public float fontSize = 20.0f;
         public Vector3 colorVector = new Vector3(1,1,1);
         protected InterviewerProjectFile owner;
+        
 
         public NodeConf conf; // Config name of the node
 
         public JObject confObject;
         
+
 
         /// <summary>
         /// Call Graphic api to draw on a bitmap png file
