@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 using GFLInterviewer.Core;
 using ImGuiNET;
 
@@ -150,10 +151,12 @@ namespace GFLInterviewer.UI
                     {
                         foreach (var colorKv in _project.colorPresets)
                         {
+                            ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(colorKv.Value, 1.0f));
                             if (ImGui.MenuItem(colorKv.Key))
                             {
                                 _currentNode.colorVector = colorKv.Value;
                             }
+                            ImGui.PopStyleColor();
                         }
                         ImGui.EndMenu();
                     }
@@ -196,7 +199,7 @@ namespace GFLInterviewer.UI
             }
 
             // Add color preset option
-            if (_isAddingColorPreset)
+            if (_isAddingColorPreset || _isDeletingColorPreset)
             {
                 ImGui.Separator();
                 ImGui.InputTextWithHint("预设名", "颜色预设名字", ref _colorPresetName, 16);
@@ -212,7 +215,7 @@ namespace GFLInterviewer.UI
                     if (_isDeletingColorPreset)
                     {
                         _project.RemoveColorPreset(_colorPresetName);
-                        _isAddingColorPreset = false;
+                        _isDeletingColorPreset = false;
                     }
                 }
                 ImGui.Separator();
@@ -250,7 +253,7 @@ namespace GFLInterviewer.UI
                     SaveFile();
                 }
                 ImGui.SameLine();
-                ImGui.Checkbox("添加Header", ref InterviewerPainter._renderHeader);
+                ImGui.Checkbox("渲染时添加Header", ref InterviewerPainter._renderHeader);
             }
             
         }

@@ -44,6 +44,7 @@ namespace ImGuiNET
                 _gd.MainSwapchain.Resize((uint)_window.Width, (uint)_window.Height);
                 _controller.WindowResized(_window.Width, _window.Height);
             };
+            
             _cl = _gd.ResourceFactory.CreateCommandList();
 
 
@@ -55,9 +56,11 @@ namespace ImGuiNET
             // Construct renderer
             _controller = new ImGuiController(_gd, _gd.MainSwapchain.Framebuffer.OutputDescription, _window.Width, _window.Height);
             
+            // IME HANDLER
+            var mvp = ImGui.GetMainViewport();
+            mvp.PlatformHandleRaw = _window.Handle;
 
-            
-            
+
             // Main application loop
             while (_window.Exists)
             {
@@ -150,6 +153,7 @@ namespace ImGuiNET
             
 
             ImGuiIOPtr io = ImGui.GetIO();
+            
             SetThing(out io.DeltaTime, 2f);
 
 
