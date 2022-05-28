@@ -1,9 +1,9 @@
 {
-  "fontPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Fonts/simhei.ttf",
-  "resourcePath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/ImageBases",
-  "avatarPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Avatar",
-  "outputPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Output",
-  "projectPath": "C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/Resources/Project",
+  "fontPath": "./Fonts/simhei.ttf",
+  "resourcePath": "./Resources/ImageBases",
+  "avatarPath": "./Resources/Avatar",
+  "outputPath": "./Resources/Output",
+  "projectPath": "./Resources/Project",
   "nodeConfs": {
     "DialogBubbleConfigL" : {
       "width" : 1375,

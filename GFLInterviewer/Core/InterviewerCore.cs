@@ -53,7 +53,7 @@ namespace GFLInterviewer.Core
         
         public static void ReadConfig()
         {
-            StreamReader file = new StreamReader("C:/Users/fangz/RiderProjects/GFLInterviewer/GFLInterviewer/config.json", Encoding.Default);
+            StreamReader file = new StreamReader("./config.json", Encoding.Default);
             using JsonTextReader reader = new JsonTextReader(file);
             configJson = (JObject)JToken.ReadFrom(reader);
             
