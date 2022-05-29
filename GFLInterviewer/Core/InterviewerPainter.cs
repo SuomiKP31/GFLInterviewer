@@ -19,7 +19,7 @@ namespace GFLInterviewer.Core
                 nodes[0].speakerName = proj.author;
                 nodes[0].content = proj.projectName;
             }
-            RenderNodeListToFile(nodes, proj.fileName);
+            RenderNodeListToFile(nodes, proj.projectName);
         }
 
         public static void RenderPngFileSegments(InterviewerProjectFile proj, int segmentLength)
@@ -36,7 +36,7 @@ namespace GFLInterviewer.Core
             while (startSegIndex < nodes.Count)
             {
                 int bound = startSegIndex + segmentLength >= nodes.Count ? nodes.Count - startSegIndex : segmentLength;
-                RenderNodeListToFile(nodes.GetRange(startSegIndex, bound), $"{proj.fileName}-{startSegIndex}");
+                RenderNodeListToFile(nodes.GetRange(startSegIndex, bound), $"{proj.projectName}-{startSegIndex}");
                 startSegIndex += segmentLength;
             }
         }
