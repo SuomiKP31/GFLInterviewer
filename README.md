@@ -25,3 +25,7 @@ Resource/Avatar下存放png格式头像，建议尺寸150x150。不用专门调�
 ## 现存Bug
 因为Imgui对IME（Input Method Editor）的支持不好，使用中文输入法在InputText框会遇到一些问题。如果你使用退格键清除输入的拼音，Imgui的InputField也会接收到退格信号，删除掉你之前打好的字。
 由于这个问题发生在底层的InputQueue，也不是Imgui当前需要紧急修复的问题，短期内应该没法解决。目前要使用的话建议先在外部打好草稿文案，再复制进这个程序生成长图。
+
+## 输出样例
+
+![Outputs...](https://user-images.githubusercontent.com/50021290/170855995-f7d34a1b-e123-49ab-977a-8042135a5eed.png)
