@@ -150,7 +150,7 @@ namespace GFLInterviewer.Core
         {
             if (logStacks.Count > 10)
             {
-                logStacks.Pop();
+                logStacks.Clear();
             }
             logStacks.Push(log);
         }

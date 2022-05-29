@@ -248,6 +248,11 @@ namespace GFLInterviewer.UI
                     OutputPngFile();
                 }
                 ImGui.SameLine();
+                if (ImGui.Button("输出png-30分段"))
+                {
+                    OutputPngFileSegment();
+                }
+                ImGui.SameLine();
                 if (ImGui.Button("保存文件"))
                 {
                     SaveFile();
@@ -353,6 +358,12 @@ namespace GFLInterviewer.UI
         {
             CriticalOpCounter(11);
             InterviewerPainter.RenderPngFile(_project);
+        }
+        
+        void OutputPngFileSegment()
+        {
+            CriticalOpCounter(11);
+            InterviewerPainter.RenderPngFileSegments(_project,30);
         }
         #endregion
         

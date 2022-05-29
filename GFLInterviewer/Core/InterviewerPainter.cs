@@ -19,6 +19,31 @@ namespace GFLInterviewer.Core
                 nodes[0].speakerName = proj.author;
                 nodes[0].content = proj.projectName;
             }
+            RenderNodeListToFile(nodes, proj.fileName);
+        }
+
+        public static void RenderPngFileSegments(InterviewerProjectFile proj, int segmentLength)
+        {
+            var nodes = new List<InterviewerBaseNode>(proj.GetNodeList());
+            if (_renderHeader)
+            {
+                nodes.Insert(0, new InterviewerHeaderNode());
+                nodes[0].speakerName = proj.author;
+                nodes[0].content = proj.projectName;
+            }
+
+            int startSegIndex = 0;
+            while (startSegIndex < nodes.Count)
+            {
+                int bound = startSegIndex + segmentLength >= nodes.Count ? nodes.Count - startSegIndex : segmentLength;
+                RenderNodeListToFile(nodes.GetRange(startSegIndex, bound), $"{proj.fileName}-{startSegIndex}");
+                startSegIndex += segmentLength;
+            }
+        }
+
+        static void RenderNodeListToFile(List<InterviewerBaseNode> nodes, string fileName)
+        {
+            
             var totalLength = CalcLength(nodes);
             var totalWidth = 1405;
 
@@ -45,9 +70,9 @@ namespace GFLInterviewer.Core
                 nodeY += height + spacingY;
             }
 
-            string fName = $"{InterviewerCore.outputPath}\\{proj.projectName}.png";
+            string fName = $"{InterviewerCore.outputPath}\\{fileName}.png";
             baseImage.Save(fName);
-            InterviewerCore.LogInfo($"Saved PNG {proj.projectName}.png");
+            InterviewerCore.LogInfo($"Saved PNG {fileName}.png");
         }
 
         static int CalcLength(List<InterviewerBaseNode> nodes)
